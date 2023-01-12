@@ -6,6 +6,7 @@ import Home from './Screens/Home/Home';
 import RegisterHR from './Screens/HR/RegisterHr/RegisterHR';
 import RegisterAdmin from './Screens/Admin/RegisterAdmin/RegisterAdmin';
 import CreateJob from './Screens/HR/CreateJob/CreateJob';
+import TpoPolicy from './Screens/Admin/TpoPolicy/TpoPolicy';
 
 function App() {
   const router = createBrowserRouter([
@@ -24,6 +25,10 @@ function App() {
 		{
 			path: "/hr/createjob",
 			element: <CreateJob/>,
+		},
+		{
+			path: "/admin/tpopolicy",
+			element: <TpoPolicy/>,
 		},
 	]);
 
