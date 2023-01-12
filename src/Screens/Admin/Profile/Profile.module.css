@@ -69,6 +69,7 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .profileContainer {
 	background-color: rgb(255, 255, 255);
 	display: flex;
@@ -77,6 +78,7 @@
 	border-radius: 8px;
 	box-shadow: 3px 3px 30px #dadbe4;
 }
+
 .profileRow {
 	display: flex;
 	justify-content: space-between;

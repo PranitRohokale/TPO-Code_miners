@@ -4,9 +4,9 @@ import ASidebar from '../../Components/adminSidebar/ASidebar'
 
 const Home = () => {
     return (
-        <div style={{display: "flex"}}>
+        <div style={{ display: "flex" }}>
             <Sidebar />
-            <ASidebar/>
+            <ASidebar />
             <div>
                 <div>
                     <h3 >Welcome hr!</h3>

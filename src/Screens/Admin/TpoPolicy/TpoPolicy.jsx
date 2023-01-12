@@ -27,7 +27,7 @@ const TpoPolicy = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(academicYear,circuitDream,circuitNormal,nonCircuitDream,nonCircuitNormal)
+		console.log(academicYear, circuitDream, circuitNormal, nonCircuitDream, nonCircuitNormal)
 	};
 
 	return (
@@ -36,7 +36,7 @@ const TpoPolicy = () => {
 		>
 			<div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
 				<div className="text-center text-2xl font-bold">
-					Register as a recruiter
+					TPO Policy
 				</div>
 				<div className="mt-4 sm:w-full sm:max-w-2xl m-auto">
 					<div className="bg-white py-4 px-4 sm:rounded-lg sm:px-10">
@@ -52,20 +52,20 @@ const TpoPolicy = () => {
 									Academic Year
 								</label>
 								<div className="mt-1">
-										<select
-											value={academicYear}
-											onChange={(e) => {
-												setAcademicYear(e.target.value);
-											}}
-											className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-										>
-											<option value={2023}>2023</option>
-											<option value={2024}>2024</option>
-											<option value={2025}>2025</option>
-											<option value={2026}>2026</option>
-											
-										</select>
-									</div>
+									<select
+										value={academicYear}
+										onChange={(e) => {
+											setAcademicYear(e.target.value);
+										}}
+										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+									>
+										<option value={2023}>2023</option>
+										<option value={2024}>2024</option>
+										<option value={2025}>2025</option>
+										<option value={2026}>2026</option>
+
+									</select>
+								</div>
 							</div>
 
 							<h2>For circuit Branches</h2>
@@ -89,7 +89,7 @@ const TpoPolicy = () => {
 									/>
 								</div>
 							</div>
-                            <div className="w-full">
+							<div className="w-full">
 								<label
 									htmlFor="name"
 									className="block text-sm font-medium text-gray-700"
@@ -109,8 +109,8 @@ const TpoPolicy = () => {
 									/>
 								</div>
 							</div>
-                            <h2>For Non Circuit Branches</h2>
-                            <div className="w-full">
+							<h2>For Non Circuit Branches</h2>
+							<div className="w-full">
 								<label
 									htmlFor="name"
 									className="block text-sm font-medium text-gray-700"
@@ -130,7 +130,7 @@ const TpoPolicy = () => {
 									/>
 								</div>
 							</div>
-                            <div className="w-full">
+							<div className="w-full">
 								<label
 									htmlFor="name"
 									className="block text-sm font-medium text-gray-700"

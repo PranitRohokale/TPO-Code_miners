@@ -26,7 +26,7 @@ export const adminSidebar = [
 		url: "/admin/blockstudents",
 		// icon: <Person2Icon className={styles.listIcon} />,
 	},
-    {
+	{
 		name: "Student list",
 		url: "/admin/studentlist",
 		// icon: <Person2Icon className={styles.listIcon} />,

@@ -22,10 +22,11 @@ const RegisterHR = () => {
 	const [companyName, setCompanyName] = useState("");
 	const [emailId, setEmailId] = useState("");
 	const [mobileNo, setMobileNo] = useState("");
+	const [password, setPassword] = useState("");
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(name,companyName,emailId,mobileNo)
+		console.log(name, companyName, emailId, mobileNo, password)
 		// toast.success("Trying to register!");
 		// try {
 		// 	await registerUser(
@@ -48,7 +49,7 @@ const RegisterHR = () => {
 			// isOpen={true}
 			// onRequestClose={closeModal}
 			style={customStyles}
-			// contentLabel="Register"
+		// contentLabel="Register"
 		>
 			<div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
 				<div className="text-center text-2xl font-bold">
@@ -109,7 +110,7 @@ const RegisterHR = () => {
 								</label>
 								<div className="mt-1">
 									<input
-										id="password"
+										id="mobile"
 										type="text"
 										placeholder="Mobile No"
 										value={mobileNo}
@@ -129,7 +130,7 @@ const RegisterHR = () => {
 								</label>
 								<div className="mt-1 w-full">
 									<input
-										id="name"
+										id="company"
 										type="text"
 										placeholder="Company Name"
 										value={companyName}
@@ -140,6 +141,27 @@ const RegisterHR = () => {
 									/>
 								</div>
 							</div>
+							<div className="w-full">
+								<label
+									htmlFor="name"
+									className="block text-sm font-medium text-gray-700"
+								>
+									Password
+								</label>
+								<div className="mt-1 w-full">
+									<input
+										id="password"
+										type="password"
+										placeholder="Password"
+										value={password}
+										onChange={(e) =>
+											setPassword(e.target.value)
+										}
+										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+									/>
+								</div>
+							</div>
+
 							<div>
 								<button
 									type="submit"

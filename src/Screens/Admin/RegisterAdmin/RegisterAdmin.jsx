@@ -24,10 +24,12 @@ const RegisterAdmin = () => {
     const [emailId, setEmailId] = useState("");
     const [gender, setGender] = useState(0);
     const [dob, setDOB] = useState("");
+    const [password, setPassword] = useState("");
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(firstName,middleName,lastName,emailId,gender,dob)
+        console.log(firstName, middleName, lastName, emailId, gender, dob, password)
         // toast.success("Trying to register!");
         // try {
         // 	await registerUser(
@@ -69,7 +71,7 @@ const RegisterAdmin = () => {
                                 </label>
                                 <div className="mt-1 w-full">
                                     <input
-                                        id="name"
+                                        id="firstname"
                                         type="text"
                                         placeholder="Name"
                                         value={firstName}
@@ -83,7 +85,7 @@ const RegisterAdmin = () => {
 
                             <div className="w-full">
                                 <label
-                                    htmlFor="name"
+                                    htmlFor="middlename"
                                     className="block text-sm font-medium text-gray-700"
                                 >
                                     Middle Name
@@ -104,14 +106,14 @@ const RegisterAdmin = () => {
 
                             <div className="w-full">
                                 <label
-                                    htmlFor="name"
+                                    htmlFor="lastname"
                                     className="block text-sm font-medium text-gray-700"
                                 >
                                     Last Name
                                 </label>
                                 <div className="mt-1 w-full">
                                     <input
-                                        id="name"
+                                        id="lastname"
                                         type="text"
                                         placeholder="Name"
                                         value={lastName}
@@ -122,6 +124,28 @@ const RegisterAdmin = () => {
                                     />
                                 </div>
                             </div>
+
+                            <div className="w-full">
+                                <label
+                                    htmlFor="name"
+                                    className="block text-sm font-medium text-gray-700"
+                                >
+                                    Password
+                                </label>
+                                <div className="mt-1 w-full">
+                                    <input
+                                        id="password"
+                                        type="password"
+                                        placeholder="Password"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                    />
+                                </div>
+                            </div>
+
                             <div>
                                 <label
                                     htmlFor="email"
@@ -143,49 +167,55 @@ const RegisterAdmin = () => {
                                 </div>
                             </div>
 
-                            <div style={{ width: "45%" }}>
-                                <label
-                                    htmlFor="password"
-                                    className="block text-sm font-medium text-gray-700"
-                                >
-                                    dob
-                                </label>
-                                <div className="mt-1">
-                                    <input
-                                        id="password"
-                                        type="date"
-                                        placeholder="DOB"
-                                        value={dob}
-                                        onChange={(e) =>
-                                            setDOB(e.target.value)
-                                        }
-                                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                    />
+                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+
+                                <div style={{ width: "45%" }}>
+                                    <label
+                                        htmlFor="password"
+                                        className="block text-sm font-medium text-gray-700"
+                                    >
+                                        dob
+                                    </label>
+                                    <div className="mt-1">
+                                        <input
+                                            id="dob"
+                                            type="date"
+                                            placeholder="DOB"
+                                            value={dob}
+                                            onChange={(e) =>
+                                                setDOB(e.target.value)
+                                            }
+                                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div style={{ width: "45%" }}>
+                                    <label
+                                        htmlFor="password"
+                                        className="block text-sm font-medium text-gray-700"
+                                    >
+                                        Gender
+                                    </label>
+                                    <div className="mt-1">
+                                        <select
+                                            value={gender}
+                                            onChange={(e) => {
+                                                setGender(e.target.value);
+                                            }}
+                                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                        >
+                                            <option value={0}>Male</option>
+                                            <option value={1}>Female</option>
+                                            <option value={2}>
+                                                Cannot specify
+                                            </option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div style={{ width: "45%" }}>
-									<label
-										htmlFor="password"
-										className="block text-sm font-medium text-gray-700"
-									>
-										Gender
-									</label>
-									<div className="mt-1">
-										<select
-											value={gender}
-											onChange={(e) => {
-												setGender(e.target.value);
-											}}
-											className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-										>
-											<option value={0}>Male</option>
-											<option value={1}>Female</option>
-											<option value={2}>
-												Cannot specify
-											</option>
-										</select>
-									</div>
-								</div>
+
+
                             <div>
                                 <button
                                     type="submit"

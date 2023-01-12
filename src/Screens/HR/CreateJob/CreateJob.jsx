@@ -18,18 +18,18 @@ const CreateJob = () => {
 		},
 	};
 
-	const [title, setTitle] =  useState("");
+	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
 	const [salary, setSalary] = useState(0);
 	const [noOfRounds, setNoOfRounds] = useState(0);
-	const [endDate,setEndDate] = useState("");
-	const [location,setLocation] = useState("");
+	const [endDate, setEndDate] = useState("");
+	const [location, setLocation] = useState("");
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-        let locationArr = location.split(",");
-		console.log(title,desc,salary,noOfRounds,endDate,locationArr)
-        
+		let locationArr = location.split(",");
+		console.log(title, desc, salary, noOfRounds, endDate, locationArr)
+
 		// toast.success("Trying to register!");
 		// try {
 		// 	await registerUser(
@@ -52,7 +52,7 @@ const CreateJob = () => {
 			// isOpen={true}
 			// onRequestClose={closeModal}
 			style={customStyles}
-			// contentLabel="Register"
+		// contentLabel="Register"
 		>
 			<div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
 				<div className="text-center text-2xl font-bold">
@@ -144,16 +144,16 @@ const CreateJob = () => {
 									/>
 								</div>
 							</div>
-                            
-                            <div className="w-full">
+
+							<div className="w-full">
 								<label
 									htmlFor="name"
 									className="block text-sm font-medium text-gray-700"
 								>
 									Location
 								</label>
-								
-                                <div className="mt-1 w-full">
+
+								<div className="mt-1 w-full">
 									<input
 										id="name"
 										type="text"
@@ -165,7 +165,7 @@ const CreateJob = () => {
 										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 									/>
 								</div>
-                            </div>
+							</div>
 							<div>
 								<button
 									type="submit"

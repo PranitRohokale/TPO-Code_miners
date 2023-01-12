@@ -9,44 +9,49 @@ import CreateJob from './Screens/HR/CreateJob/CreateJob';
 import TpoPolicy from './Screens/Admin/TpoPolicy/TpoPolicy';
 import ProfileScreen from './Screens/Admin/Profile/Profile';
 import HRProfileScreen from './Screens/HR/Profile/Profile';
+import Login from './Screens/Login/Login';
 
 function App() {
-  const router = createBrowserRouter([
+	const router = createBrowserRouter([
 		{
 			path: "/",
 			element: <Home />,
 		},
 		{
 			path: "/hr/register",
-			element: <RegisterHR/>,
+			element: <RegisterHR />,
 		},
 		{
 			path: "/admin/register",
-			element: <RegisterAdmin/> ,
+			element: <RegisterAdmin />,
 		},
 		{
 			path: "/hr/createjob",
-			element: <CreateJob/>,
+			element: <CreateJob />,
 		},
 		{
 			path: "/admin/tpopolicy",
-			element: <TpoPolicy/>,
+			element: <TpoPolicy />,
 		},
 		{
 			path: "/admin/profile",
-			element: <ProfileScreen/>,
+			element: <ProfileScreen />,
 		},
 		{
 			path: "/hr/profile",
-			element: <HRProfileScreen/>,
+			element: <HRProfileScreen />,
+		},
+		{
+			path: "/login",
+			element: <Login />,
 		},
 	]);
 
-  return (
-    <div >
-      <RouterProvider router={router} />
-    </div>
-  );
+	return (
+		<div >
+			<RouterProvider router={router} />
+		</div>
+	);
 }
 
 export default App;
