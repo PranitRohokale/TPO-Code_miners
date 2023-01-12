@@ -7,6 +7,8 @@ import RegisterHR from './Screens/HR/RegisterHr/RegisterHR';
 import RegisterAdmin from './Screens/Admin/RegisterAdmin/RegisterAdmin';
 import CreateJob from './Screens/HR/CreateJob/CreateJob';
 import TpoPolicy from './Screens/Admin/TpoPolicy/TpoPolicy';
+import ProfileScreen from './Screens/Admin/Profile/Profile';
+import HRProfileScreen from './Screens/HR/Profile/Profile';
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +31,14 @@ function App() {
 		{
 			path: "/admin/tpopolicy",
 			element: <TpoPolicy/>,
+		},
+		{
+			path: "/admin/profile",
+			element: <ProfileScreen/>,
+		},
+		{
+			path: "/hr/profile",
+			element: <HRProfileScreen/>,
 		},
 	]);
 
