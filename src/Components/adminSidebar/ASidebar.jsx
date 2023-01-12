@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { hrSidebar } from "./hrSidebar";
+import { adminSidebar } from "./adminSidebar";
 import styles from "./Sidebar.module.css";
 // import DashboardIcon from "@mui/icons-material/Dashboard";
 
-const Sidebar = ({ value }) => {
+const ASidebar = ({ value }) => {
 	return (
 		<div className={styles.sidebar_wrapper}>
 			<Link to="/">
@@ -15,7 +15,7 @@ const Sidebar = ({ value }) => {
 			<hr className="bg-gray-200 border-0" />
 			<div>
 				<ul className={styles.sidebarList}>
-					{hrSidebar.map((item, index) => {
+					{adminSidebar.map((item, index) => {
 						// console.log(item,"item")
 						return (
 							<li key={item.name}>
@@ -26,7 +26,6 @@ const Sidebar = ({ value }) => {
 								>
 									{/* {item.icon} */}
 									<Link style={{textDecoration: "none"}} to={item.url}>{item.name}</Link>
-
 								</div>
 							</li>
 						);
@@ -37,4 +36,4 @@ const Sidebar = ({ value }) => {
 	);
 };
 
-export default Sidebar;
+export default ASidebar;
