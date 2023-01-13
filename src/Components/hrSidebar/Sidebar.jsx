@@ -16,7 +16,6 @@ const Sidebar = ({ value }) => {
 			<div>
 				<ul className={styles.sidebarList}>
 					{hrSidebar.map((item, index) => {
-						// console.log(item,"item")
 						return (
 							<li key={item.name}>
 								<div

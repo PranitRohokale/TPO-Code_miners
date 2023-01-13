@@ -36,7 +36,6 @@ const PastJobs = () => {
         const role = "";
         supabase.auth.getSession().then((res) => {
             if (res?.data?.session?.user) {
-                // console.log(" HR ", res?.data?.session?.user.id);
                 setJobId(res?.data?.session?.user?.id)
             }
             else navigate("/login");
@@ -49,7 +48,6 @@ const PastJobs = () => {
 
 
     }, [jobId]);
-    // console.log(rdata, rerror, "jobs")
 
     return (
         <div>
@@ -65,7 +63,6 @@ const PastJobs = () => {
                         }
 
                         {data?.Job_Details.map((job, index) => (
-                            // console.log(job)
                             <div style={{ borderRadius: "3px", backgroundColor: "#edd185", width: "300px", height: "220px", padding: "20px", margin: "20px" }} key={index}>
                                 <div>
                                     <p style={{ fontSize: "17px", color: "white" }}><strong>Title : {job.title}</strong></p>

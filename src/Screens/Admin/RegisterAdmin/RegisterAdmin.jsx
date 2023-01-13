@@ -95,7 +95,6 @@ const RegisterAdmin = () => {
   return (
     <div
       style={customStyles}
-      // contentLabel="Register"
     >
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
         <div className="text-center text-2xl font-bold">
@@ -236,7 +235,6 @@ const RegisterAdmin = () => {
                     >
                       <option value="male">Male</option>
                       <option value="female">Female</option>
-                      {/* <option value="other">Cannot specify</option> */}
                     </select>
                   </div>
                 </div>

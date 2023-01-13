@@ -13,19 +13,23 @@ mutation createNewTpo($objects: [TPO_Heads_insert_input!]!) {
   }
 `;
 
-// {
-//     "objects": [
-//       {
-//         "id": "",
-//         "firstName": "Pranit",
-//         "lastName": "Rohokale",
-//         "middleName": "Rangnath",
-//         "gender": "male",
-//         "clgEmail": "prrohokale_b19@ce.vjti.ac.in"
-//       }
-//     ]
-//   }
+const GET_ADMIN_INFO_QUERY = gql`
+  query getAdminInfo($id: uuid = "") {
+    TPO_Heads_by_pk(id: $id) {
+      firstName
+      middleName
+      lastName
+      id
+      gender
+      dob
+      clgEmail
+      inserted_at
+    }
+  }
+`;
+
 
 export {
-    CREATE_NEW_ADMIN_MUTATION
+    CREATE_NEW_ADMIN_MUTATION,
+    GET_ADMIN_INFO_QUERY
 }

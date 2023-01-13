@@ -18,7 +18,7 @@ const HRProfileScreen = () => {
         setJobId(res?.data?.session?.user?.id)
       }
       else navigate("/login");
-      const role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
+      let role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
       console.log(role);
       if (role && role != "hr") navigate(`/${role}`);
     });
@@ -26,27 +26,20 @@ const HRProfileScreen = () => {
 
   const { loading, error, data } = useQuery(GET_RECRUITER_INFO, {
     variables: { "_eq": jobId }
-});
-
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    mobileno: "",
-    company: "",
   });
 
   const { loading: rloading, error: rerror, data: rdata } = useQuery(GET_RECRUITER_INFO, {
     variables: { "_eq": jobId }
   });
 
-  console.log(rdata?.Recruiters,"data")
+  console.log(rdata?.Recruiters[0], "data")
 
   return (
     <div className={styles.hospitals_wrapper}>
       <Sidebar value="Profile" />
       <div className={styles.main_wrapper}>
         <div className={styles.navBar}>
-          <h3 className={styles.user}>Welcome {}!</h3>
+          <h3 className={styles.user}>Welcome {rdata?.Recruiters[0]?.name}!</h3>
         </div>
         <div className={styles.inforWrapper}>
           <div className={styles.hospitals_search}>
@@ -55,15 +48,30 @@ const HRProfileScreen = () => {
             </button>
           </div>
           <div className={styles.profileContainer}>
-            {Object.keys(user).map((key, index) => (
-              <div key={index}>
-                <div className={styles.profileRow}>
-                  <h4 className={styles.title}>{key.toLocaleUpperCase()} :</h4>
-                  <p className={styles.text}>{user[key]}</p>
-                </div>
-                <hr className={styles.horizontal} />
+            <div>
+              <div className={styles.profileRow}>
+                <p className={styles.text}><span className={styles.title}>NAME :</span> {rdata?.Recruiters[0]?.name} </p>
               </div>
-            ))}
+              <hr className={styles.horizontal} />
+            </div>
+            <div>
+              <div className={styles.profileRow}>
+                <p className={styles.text}><span className={styles.title}>EMAIL :</span> {rdata?.Recruiters[0]?.email} </p>
+              </div>
+              <hr className={styles.horizontal} />
+            </div>
+            <div>
+              <div className={styles.profileRow}>
+                <p className={styles.text}><span className={styles.title}>MOBILE :</span> {rdata?.Recruiters[0]?.mobileNo} </p>
+              </div>
+              <hr className={styles.horizontal} />
+            </div>
+            <div>
+              <div className={styles.profileRow}>
+                <p className={styles.text}><span className={styles.title}>COMPANY :</span> {rdata?.Recruiters[0]?.companyName} </p>
+              </div>
+              <hr className={styles.horizontal} />
+            </div>
           </div>
         </div>
       </div>

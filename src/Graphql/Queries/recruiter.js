@@ -14,9 +14,6 @@ query getRecruterInfo($_eq: uuid = "") {
   }
 `;
 
-// {
-//     "_eq": "53ec5de4-e19f-4a02-988c-d10805680eab"
-// }
 
 const GET_JOB_CREATED_BY_RECRUTER_QUERY = gql`
   query getJobCreatedByRecruter($_eq: uuid = "") {
@@ -33,10 +30,6 @@ const GET_JOB_CREATED_BY_RECRUTER_QUERY = gql`
 }
 
 `;
-
-
-
-
 
 
 export {

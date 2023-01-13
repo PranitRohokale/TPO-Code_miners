@@ -32,12 +32,10 @@ const RegisterHR = () => {
   const navigate = useNavigate();
   useEffect(() => {
     supabase.auth.getSession().then((res) => {
-      // console.log(res);
       const role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
       if (role) navigate(`/${role}`);
       else if (res?.data?.session?.user) navigate(-1);
     });
-    // console.log(userInfo);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -56,8 +54,6 @@ const RegisterHR = () => {
       },
     });
 
-    // console.log(data.user.id, "data")
-    // console.log(hrData, hrError, "after gql query")
 
     if (!error) {
       hrRegister({
@@ -87,10 +83,7 @@ const RegisterHR = () => {
 
   return (
     <div
-      // isOpen={true}
-      // onRequestClose={closeModal}
       style={customStyles}
-    // contentLabel="Register"
     >
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
         <div className="text-center text-2xl font-bold">
