@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from '@apollo/client';
 import { supabase } from "../../../Utils/supabase.config";
-
+import { CREATE_NEW_RECRUTERS_MUTATION } from "../../../Graphql/Mutations/recruter";
 // import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 // import PublicIcon from "@mui/icons-material/Public";
 
@@ -26,10 +27,12 @@ const RegisterHR = () => {
   const [mobileNo, setMobileNo] = useState("");
   const [password, setPassword] = useState("");
 
+  const [hrRegister, { hrData, loading, hrError }] = useMutation(CREATE_NEW_RECRUTERS_MUTATION);
+
   const navigate = useNavigate();
   useEffect(() => {
     supabase.auth.getSession().then((res) => {
-      console.log(res);
+      // console.log(res);
       const role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
       if (role) navigate(`/${role}`);
       else if (res?.data?.session?.user) navigate(-1);
@@ -53,15 +56,33 @@ const RegisterHR = () => {
       },
     });
 
+    // console.log(data.user.id, "data")
+    // console.log(hrData, hrError, "after gql query")
+
     if (!error) {
+      hrRegister({
+        variables: {
+          objects: [
+            {
+              "id": data.user.id,
+              "name": name,
+              "email": emailId,
+              "companyName": companyName,
+              "mobileNo": mobileNo
+            }
+          ]
+        }
+      });
       alert("To verify email checkout your inbox..");
       navigate("/login");
     }
-	setName("")
-	setPassword("")
-	setCompanyName("")
-	setEmailId("")
-	setMobileNo("")
+
+
+    setName("")
+    setPassword("")
+    setCompanyName("")
+    setEmailId("")
+    setMobileNo("")
   };
 
   return (
@@ -69,7 +90,7 @@ const RegisterHR = () => {
       // isOpen={true}
       // onRequestClose={closeModal}
       style={customStyles}
-      // contentLabel="Register"
+    // contentLabel="Register"
     >
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
         <div className="text-center text-2xl font-bold">

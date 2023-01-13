@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../../Utils/supabase.config";
+import { CREATE_NEW_ADMIN_MUTATION } from "../../../Graphql/Mutations/admin";
+import { useMutation } from '@apollo/client';
 
 const customStyles = {
   content: {
@@ -34,9 +36,11 @@ const RegisterAdmin = () => {
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
   const [emailId, setEmailId] = useState("");
-  const [gender, setGender] = useState(0);
+  const [gender, setGender] = useState("");
   const [dob, setDOB] = useState("");
   const [password, setPassword] = useState("");
+
+  const [adminRegister, { adminData, adminLoading, adminError }] = useMutation(CREATE_NEW_ADMIN_MUTATION);
 
   const handleSubmit = async (e) => {
     // const { error } = await supabase.auth.signOut(); 
@@ -63,9 +67,26 @@ const RegisterAdmin = () => {
         },
       },
     });
+    console.log(data,"data")
 
     if (!error) {
       setUserInfo(data?.session);
+      adminRegister({
+        variables: {
+          objects: [
+            {
+              "id": data.user.id,
+              "firstName": firstName,
+              "lastName": lastName,
+              "middleName": middleName,
+              "gender": gender,
+              "clgEmail": emailId
+            }
+          ]
+        }
+      })
+    console.log(adminData, adminError,adminLoading, "after gql query")
+
       navigate("/login");
     } else alert(error?.message);
   };
@@ -212,9 +233,9 @@ const RegisterAdmin = () => {
                       }}
                       className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
-                      <option value={0}>Male</option>
-                      <option value={1}>Female</option>
-                      <option value={2}>Cannot specify</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      {/* <option value="other">Cannot specify</option> */}
                     </select>
                   </div>
                 </div>
