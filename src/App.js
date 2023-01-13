@@ -14,6 +14,8 @@ import AdminDashboard from './Screens/Admin/Dashboard/Dashboard';
 import ViewStudents from './Screens/Admin/ViewStudents/ViewStudents';
 import PastJobs from './Screens/HR/PastJobs/PastJobs';
 import Job from './Screens/HR/Job';
+import ApplicantList from './Screens/HR/ApplicantList';
+import RoundDetails from './Screens/HR/RoundDetail';
 
 
 function App() {
@@ -27,25 +29,27 @@ function App() {
 				{/* hr routes goes here */}
 				<Routes>
 					<Route path='/hr'>
-						<Route index element={<p>hrr</p>} />
+						<Route index element={<HRProfileScreen />} />
 						<Route path='register' element={<RegisterHR />} />
 						<Route path='createjob' element={<CreateJob />} />
 						<Route path='profile' element={<HRProfileScreen />} />
-						<Route path='createdjobs' element={<PastJobs />} />
-						<Route path='createdjobs/:jobId' element={<Job />} />
-						
+						<Route path='createdjobs'  >
+							<Route index element={<PastJobs />} />
+							<Route path=':jobId' element={<Job />} >
+								<Route path='applicantList' element={<ApplicantList />} />
+								<Route path=':roundId' element={<RoundDetails />} />
+							</Route>
+						</Route>
 						<Route path='*' element={<h1>404 page!</h1>} />
-
 					</Route>
 				</Routes>
 				{/* admin routes goes here  */}
 				<Routes>
 					<Route path='/admin'>
-						<Route index element={<AdminDashboard/>} />
+						<Route index element={<AdminDashboard />} />
 						<Route path='register' element={<RegisterAdmin />} />
 						<Route path='tpopolicy' element={<TpoPolicy />} />
 						<Route path='profile' element={<ProfileScreen />} />
-						{/* <Route path='dashboard' element={<AdminDashboard />} /> */}
 						<Route path='view_students' element={<ViewStudents />} />
 						<Route path='*' element={<h1>404 page!</h1>} />
 					</Route>
