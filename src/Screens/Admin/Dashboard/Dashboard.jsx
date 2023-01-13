@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import DashboardCard from "../../../Components/dashboard/DashboardCard";
 import DashboardTable from "../../../Components/dashboard/DashboardTable";
 import DashboardHeading from "../../../Components/dashboard/DashboardHeading";
+import ASidebar from "../../../Components/adminSidebar/ASidebar";
 
 function createData(
     name,
@@ -68,7 +69,11 @@ var dashboardData= {
 const AdminDashboard = () => {
 
     return (
-        <Container maxWidth='lg' sx={{ my: 5 }}>
+        // <div>
+        <div style={{display:"flex"}}>
+        <ASidebar/>
+
+   <Container maxWidth='lg' sx={{ my: 5 }}>
             <Typography
             sx={{
                 fontSize: 40,
@@ -101,6 +106,10 @@ const AdminDashboard = () => {
             <DashboardHeading text='Top 10 Recruiters:'/>
             <DashboardTable rows={dashboardData.top10Companies}/>
         </Container>
+        </div>
+     
+        // <div/>
+
     );
 };
 

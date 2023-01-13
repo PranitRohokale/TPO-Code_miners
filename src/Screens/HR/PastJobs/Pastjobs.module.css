@@ -1,0 +1,10 @@
+.mainCard{
+    background-color: red;
+}
+
+.btn, .btn-primary {
+    position: absolute;
+    bottom: 5px;
+    color: #263238;
+    overflow: auto;
+}
