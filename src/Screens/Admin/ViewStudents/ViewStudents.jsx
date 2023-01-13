@@ -146,6 +146,17 @@ const ViewStudents = () => {
 
   return (
     <Container maxWidth="lg" sx={{ my: 5 }}>
+            <Typography
+            sx={{
+                fontSize: 40,
+                textAlign: "center",
+                fontWeight: 500,
+                color: "#8c47ed"
+            }}
+            gutterBottom
+            >
+            Student List
+            </Typography>
       {students ? (
         <TableContainer component={Paper}>
           <Table
@@ -154,20 +165,20 @@ const ViewStudents = () => {
           >
             <TableHead>
               <TableRow>
-                <TableCell>Student Name</TableCell>
-                <TableCell align="right">Is CR</TableCell>
-                <TableCell align="right">Is Placed</TableCell>
-                <TableCell align="right">Programme</TableCell>
-                <TableCell align="right">Branch</TableCell>
-                <TableCell align="right">ID</TableCell>
-                <TableCell align="right">Grad Year</TableCell>
-                <TableCell align="right">Gender</TableCell>
-                <TableCell align="right">Age</TableCell>
-                <TableCell align="right">CPI</TableCell>
-                <TableCell align="right">10th</TableCell>
-                <TableCell align="right">12th</TableCell>
-                <TableCell align="right">Mobile</TableCell>
-                <TableCell align="right">Resume Link</TableCell>
+                <TableCell style={{fontWeight: 600}}>Student Name</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Is CR</TableCell>
+                <TableCell style={{fontWeight: 600}}>Is Placed</TableCell>
+                <TableCell style={{fontWeight: 600}}>Programme</TableCell>
+                <TableCell style={{fontWeight: 600}}>Branch</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>ID</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Grad Year</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Gender</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Age</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>CPI</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>10th</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>12th</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Mobile</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Resume Link</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
