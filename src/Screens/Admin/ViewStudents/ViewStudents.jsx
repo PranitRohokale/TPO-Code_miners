@@ -164,6 +164,10 @@ const ViewStudents = () => {
                 <TableCell align="right">Gender</TableCell>
                 <TableCell align="right">Age</TableCell>
                 <TableCell align="right">CPI</TableCell>
+                <TableCell align="right">10th</TableCell>
+                <TableCell align="right">12th</TableCell>
+                <TableCell align="right">Mobile</TableCell>
+                <TableCell align="right">Resume Link</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -181,12 +185,6 @@ const ViewStudents = () => {
                       onChange={(e) => {
                         var newStudentAttr = { "isCr": !row.isCr }; //...students[index],
                         updateStudent(row.id, newStudentAttr);
-                        // var newData={
-                        //   "Students": [...students, ]
-                        // }
-                        // var crList_ = crList;
-                        // crList_[row.id] = !crList_[row.id];
-                        // setCrList(crList_);
                         var updatedCrs_ = updatedCrs;
                         updatedCrs_[row.id] = students[index].isCr;
                         setUpdatedCrs(updatedCrs_);
@@ -219,6 +217,23 @@ const ViewStudents = () => {
                   <TableCell align="right">
                     {row.CPI ? row.CPI : "N/A"}
                   </TableCell>
+                  <TableCell align="right">
+                    {row.column_10th ? row.column_10th : "N/A"}
+                  </TableCell>
+                  <TableCell align="right">
+                    {row.column_12th ? row.column_12th : "N/A"}
+                  </TableCell>
+                  <TableCell align="right">
+                    {row.mobileNumber ? row.mobileNumber : "N/A"}
+                  </TableCell>
+                  <TableCell align="right">
+                      
+                    {row.resumeLink ? 
+                      <div styles={{color: "#4287f5"}}>
+                          <a href={row.resumeLink} > Link</a>
+                      </div>
+                     : "N/A"}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -227,7 +242,15 @@ const ViewStudents = () => {
       ) : (
         "Loading..."
       )}
-      {/* <Button onClick={()=>(console.log(crList))}>Log crList</Button> */}
+      <hr/>
+      <Button 
+        onClick={()=>{}}
+        variant='contained'
+        color="success"
+        sx={{marginTop:3, marginLeft:120}}
+      >
+        Save Changes
+      </Button>
     </Container>
   );
 };
