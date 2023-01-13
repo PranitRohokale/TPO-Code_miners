@@ -127,7 +127,7 @@ const ViewStudents = () => {
       for (var student of data.Students) {
         temp_cr_list[student.id] = student.isCr;
       }
-      setCrList(crList);
+      setCrList(temp_cr_list);
       console.log("crlist: "+crList);
     }
     console.log(crList);
