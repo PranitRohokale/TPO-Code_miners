@@ -10,6 +10,7 @@ import TpoPolicy from './Screens/Admin/TpoPolicy/TpoPolicy';
 import ProfileScreen from './Screens/Admin/Profile/Profile';
 import HRProfileScreen from './Screens/HR/Profile/Profile';
 import Login from './Screens/Login/Login';
+import AdminDashboard from './Screens/Admin/Dashboard/Dashboard';
 
 function App() {
 	const router = createBrowserRouter([
@@ -45,6 +46,10 @@ function App() {
 			path: "/login",
 			element: <Login />,
 		},
+		{
+			path: "/admin/dashboard",
+			element: <AdminDashboard />
+		}
 	]);
 
 	return (
