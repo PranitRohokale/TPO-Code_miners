@@ -167,9 +167,9 @@ const ViewStudents = () => {
               <TableRow>
                 <TableCell style={{fontWeight: 600}}>Student Name</TableCell>
                 <TableCell align="right" style={{fontWeight: 600}}>Is CR</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>Is Placed</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>Programme</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>Branch</TableCell>
+                <TableCell style={{fontWeight: 600}}>Is Placed</TableCell>
+                <TableCell style={{fontWeight: 600}}>Programme</TableCell>
+                <TableCell style={{fontWeight: 600}}>Branch</TableCell>
                 <TableCell align="right" style={{fontWeight: 600}}>ID</TableCell>
                 <TableCell align="right" style={{fontWeight: 600}}>Grad Year</TableCell>
                 <TableCell align="right" style={{fontWeight: 600}}>Gender</TableCell>
