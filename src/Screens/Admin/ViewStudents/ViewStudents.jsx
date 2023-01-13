@@ -128,6 +128,7 @@ const ViewStudents = () => {
         temp_cr_list[student.id] = student.isCr;
       }
       setCrList(crList);
+      console.log("crlist: "+crList);
     }
     console.log(crList);
   }, []);
@@ -139,6 +140,13 @@ const ViewStudents = () => {
 
   return (
     <Container maxWidth="lg" sx={{ my: 5 }}>
+      {data &&
+        data.Students.map((row, index) => (
+          <div key={row.id}>
+            {console.log(row.id + ": " + row.isCr+" -> "+crList[row.id])}
+            {/* {row.id} */}
+          </div>
+        ))}
       {data ? (
         <TableContainer component={Paper}>
           <Table
@@ -195,13 +203,21 @@ isSuperPlaced: null, */}
                         : "Yes, Normal"
                       : "No"}
                   </TableCell>
-                  <TableCell>{row.programme?row.programme:"N/A"}</TableCell>
-                  <TableCell>{row.branch?row.branch:"N/A"}</TableCell>
-                  <TableCell align="right">{row.clgId?row.clgId:"N/A"}</TableCell>
-                  <TableCell align="right">{row.gradYear?row.gradYear:"N/A"}</TableCell>
-                  <TableCell>{row.gender?row.gender:"N/A"}</TableCell>
-                  <TableCell align="right">{row.age?row.age:"N/A"}</TableCell>
-                  <TableCell align="right">{row.CPI?row.CPI:"N/A"}</TableCell>
+                  <TableCell>{row.programme ? row.programme : "N/A"}</TableCell>
+                  <TableCell>{row.branch ? row.branch : "N/A"}</TableCell>
+                  <TableCell align="right">
+                    {row.clgId ? row.clgId : "N/A"}
+                  </TableCell>
+                  <TableCell align="right">
+                    {row.gradYear ? row.gradYear : "N/A"}
+                  </TableCell>
+                  <TableCell>{row.gender ? row.gender : "N/A"}</TableCell>
+                  <TableCell align="right">
+                    {row.age ? row.age : "N/A"}
+                  </TableCell>
+                  <TableCell align="right">
+                    {row.CPI ? row.CPI : "N/A"}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -210,6 +226,7 @@ isSuperPlaced: null, */}
       ) : (
         "Loading..."
       )}
+      <Button onClick={()=>(console.log(crList))}>Log crList</Button>
     </Container>
   );
 };
