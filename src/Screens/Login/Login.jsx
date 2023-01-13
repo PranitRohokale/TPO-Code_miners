@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { isLoggedIn } from "../../Utils/isLoggedIn";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../Utils/supabase.config";
 
@@ -18,16 +17,22 @@ const customStyles = {
 };
 
 const Login = () => {
-  const [userInfo, setUserInfo] = useState();
   const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState("");
+
   useEffect(() => {
+    const role = "";
     supabase.auth.getSession().then((res) => {
-      setUserInfo(res?.data?.session?.user);
-      console.log(res?.data?.session?.user);
-      navigate("/");
+      if (res?.data?.session?.user) setUserInfo(res?.data?.session);
+      role = res?.data?.session?.user?.user_metadata?.role;
+      console.log("res ", res);
+      if (role) navigate(`/${role}`);
     });
 
-    console.log(userInfo);
+    // dispatch(getUserDetails());
+    // const role = userDetailInfo?.user?.user_metadata?.role;
+    // console.log(role);
+    // if (role) navigate(`/${role}`);
   }, []);
 
   const [email, setEmail] = useState("");
@@ -36,6 +41,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     console.log(email, password, role);
     if (!(email && password && role)) {
       return alert("fill all fields");
@@ -48,8 +54,15 @@ const Login = () => {
     if (
       data?.session?.user?.user_metadata?.role?.toLowerCase() ==
       role.toLowerCase()
-    )
-      navigate("/");
+    ) {
+      const role = data?.session?.user?.user_metadata?.role?.toLowerCase();
+      navigate(`/${role}`);
+    } else alert("somthing went wrong!!");
+
+    //reset
+    setEmail("");
+    setPassword("");
+    setRole("admin");
   };
 
   return (
@@ -80,7 +93,7 @@ const Login = () => {
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   >
                     <option value="admin">Admin</option>
-                    <option value="recruiter">Recruiter</option>
+                    <option value="hr">Recruiter</option>
                   </select>
                 </div>
               </div>

@@ -30,16 +30,16 @@ export const userLoginReducer = (state = {}, action) => {
   }
 }
 
-export const userDetailsReducer = (state = { user: {} }, action) => {
+export const userDetailsReducer = (state = {  }, action) => {
   switch (action.type) {
     case ADMIN_DETAILS_REQUEST:
       return { ...state, loading: true }
     case ADMIN_DETAILS_SUCCESS:
-      return { loading: false, user: action.payload }
+      return { loading: false, userInfo: action.payload }
     case ADMIN_DETAILS_FAIL:
       return { loading: false, error: action.payload }
     case ADMIN_DETAILS_RESET:
-      return { user: {} }
+      return { userInfo: {} }
     default:
       return state
   }

@@ -9,6 +9,7 @@ import TpoPolicy from './Screens/Admin/TpoPolicy/TpoPolicy';
 import ProfileScreen from './Screens/Admin/Profile/Profile';
 import HRProfileScreen from './Screens/HR/Profile/Profile';
 import Login from './Screens/Login/Login';
+import Logout from './Screens/Logout';
 
 function App() {
 
@@ -36,7 +37,11 @@ function App() {
 						<Route path='register' element={<RegisterAdmin />} />
 						<Route path='tpopolicy' element={<TpoPolicy />} />
 						<Route path='profile' element={<ProfileScreen />} />
+						<Route path='*' element={<h1>404 page!</h1>} />
 					</Route>
+				</Routes>
+				<Routes>
+					<Route path='/logout' element={<Logout />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

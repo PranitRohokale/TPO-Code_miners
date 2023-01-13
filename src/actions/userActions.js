@@ -9,8 +9,8 @@ export const register = ({ firstName, middleName, lastName, gender, dob, email, 
 
 
         const { data, error } = await supabase.auth.signUp({
-            email ,
-            password ,
+            email,
+            password,
             options: {
                 data: {
                     role
@@ -46,10 +46,10 @@ export const login = (email, password) => async (dispatch) => {
             email, password
         })
 
-
+        console.log("DATA : ", data?.session);
         dispatch({
             type: ADMIN_LOGIN_SUCCESS,
-            payload: data,
+            payload: data?.session,
         })
 
     } catch (error) {
@@ -81,11 +81,11 @@ export const getUserDetails = () => async (dispatch) => {
             type: ADMIN_DETAILS_REQUEST,
         })
 
-        const { data: { user } } = await supabase.auth.getUser()
-
+        const { data } = await supabase.auth.getUser()
+        console.log("getUserDetails ", data);
         dispatch({
             type: ADMIN_DETAILS_SUCCESS,
-            payload: user,
+            payload: data?.user ? data?.user : undefined,
         })
     } catch (error) {
         const message =

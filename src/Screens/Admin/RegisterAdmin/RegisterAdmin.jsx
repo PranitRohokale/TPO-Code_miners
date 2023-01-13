@@ -21,14 +21,14 @@ const RegisterAdmin = () => {
   const navigate = useNavigate();
   useEffect(() => {
     supabase.auth.getSession().then((res) => {
-        console.log(res);
-        const role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
-        //   if (role) navigate(`/${role}`);
-        setUserInfo(res?.data?.session?.user);
+      console.log(res);
+      const role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
+      if (role) navigate(`/${role}`);
+      setUserInfo(res?.data?.session?.user);
     });
 
     console.log(userInfo);
-  }, [userInfo]);
+  }, []);
 
   const [firstName, setfirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
@@ -62,12 +62,10 @@ const RegisterAdmin = () => {
       },
     });
 
-    if (data) {
+    if (!error) {
       setUserInfo(data?.session);
       navigate("/login");
-    }
-
-    alert(error?.message);
+    } else alert(error?.message);
   };
 
   return (
