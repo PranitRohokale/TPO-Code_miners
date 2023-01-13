@@ -24,7 +24,6 @@ const Sidebar = ({ value }) => {
 								>
 									{/* {item.icon} */}
 									<Link style={{ textDecoration: "none" }} to={item.url}>{item.name}</Link>
-
 								</div>
 							</li>
 						);

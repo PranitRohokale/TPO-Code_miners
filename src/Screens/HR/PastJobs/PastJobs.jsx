@@ -63,7 +63,7 @@ const PastJobs = () => {
                         }
 
                         {data?.Job_Details.map((job, index) => (
-                            <div style={{ borderRadius: "3px", backgroundColor: "#edd185", width: "300px", height: "220px", padding: "20px", margin: "20px" }} key={index}>
+                            <div style={{ borderRadius: "3px", backgroundColor: "#f4dc7a", width: "300px", height: "210px", padding: "20px", margin: "20px" }} key={index}>
                                 <div>
                                     <p style={{ fontSize: "17px", color: "white" }}><strong>Title : {job.title}</strong></p>
                                     <div>
@@ -74,7 +74,7 @@ const PastJobs = () => {
                                         <p style={{ fontSize: "15px", color: "white", marginTop: "10px" }}>Salary :{job.salary}</p>
                                     </div>
 
-                                    <button style={{ backgroundColor: "#f2c341", width: "180px", padding: "10px", margin: "20px", borderRadius: "20px" }}
+                                    <button style={{ backgroundColor: "#d1b113", width: "180px", padding: "10px", margin: "20px", borderRadius: "20px",margin:" 30px 30px " }}
 
                                         rel={"noopener noreferrer"}
                                         onClick={(e) => {

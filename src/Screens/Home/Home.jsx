@@ -5,11 +5,11 @@ import ASidebar from '../../Components/adminSidebar/ASidebar'
 const Home = () => {
     return (
         <div style={{ display: "flex" }}>
-            <Sidebar />
-            <ASidebar />
+            {/* <Sidebar />
+            <ASidebar /> */}
             <div>
                 <div>
-                    <h3 >Welcome hr!</h3>
+                    <h3 >Welcome home!</h3>
                 </div>
             </div>
         </div>
