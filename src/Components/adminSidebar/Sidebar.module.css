@@ -1,6 +1,6 @@
 .sidebar_wrapper {
 	display: flex;
-	width: 240px;
+	width:20%;
 	height: 100vh;
 	flex-direction: column;
 	padding: 20px 10px;
@@ -42,7 +42,6 @@
 .sidebarList li div:hover,
 .active {
 	background-color: #f3bcad;
-	/* background-color: #007ea7; */
 	cursor: pointer;
 }
 

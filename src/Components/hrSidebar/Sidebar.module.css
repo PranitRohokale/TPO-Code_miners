@@ -1,11 +1,9 @@
 .sidebar_wrapper {
 	display: flex;
-	width: 240px;
+	width:20%;
 	height: 100vh;
 	flex-direction: column;
 	padding: 20px 10px;
-	/* background-color: #3c4fff; */
-	/* background-color: #219ebc; */
 	background-color: #f4dc7a;
 	overflow: hidden;
 }
@@ -42,7 +40,6 @@
 .sidebarList li div:hover,
 .active {
 	background-color: #f0eab1;
-	/* background-color: #007ea7; */
 	cursor: pointer;
 }
 
