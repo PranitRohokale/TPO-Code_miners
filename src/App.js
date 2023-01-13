@@ -10,9 +10,11 @@ import ProfileScreen from './Screens/Admin/Profile/Profile';
 import HRProfileScreen from './Screens/HR/Profile/Profile';
 import Login from './Screens/Login/Login';
 import Logout from './Screens/Logout';
+import AdminDashboard from './Screens/Admin/Dashboard/Dashboard';
+import ViewStudents from './Screens/Admin/ViewStudents/ViewStudents';
+
 
 function App() {
-
 	return (
 		<div >
 			<BrowserRouter>
@@ -37,6 +39,8 @@ function App() {
 						<Route path='register' element={<RegisterAdmin />} />
 						<Route path='tpopolicy' element={<TpoPolicy />} />
 						<Route path='profile' element={<ProfileScreen />} />
+						<Route path='dashboard' element={<AdminDashboard />} />
+						<Route path='view_students' element={<ViewStudents />} />
 						<Route path='*' element={<h1>404 page!</h1>} />
 					</Route>
 				</Routes>
