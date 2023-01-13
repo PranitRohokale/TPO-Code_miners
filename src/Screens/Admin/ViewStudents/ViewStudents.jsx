@@ -118,36 +118,46 @@ import { useQuery } from "@apollo/client";
 // };
 
 const ViewStudents = () => {
-  const { loading, error, data } = useQuery(GET_ALL_STUDENTS);
-  const [crList, setCrList] = useState({});
-  const [updatedCrs, setUpdatedCrs] = useState({});
-  useEffect(() => {
-    if (data) {
-      var temp_cr_list = {};
-      for (var student of data.Students) {
-        temp_cr_list[student.id] = student.isCr;
-      }
-      setCrList(temp_cr_list);
-      console.log("crlist: "+crList);
+  const [students, setStudents] = useState([]);
+  const { loading, error } = useQuery(GET_ALL_STUDENTS, {
+    onCompleted: (data) => setStudents(data.Students),
+  });
+  const updateStudent = (id, studentAttributes) => {
+    var index = students.findIndex((x) => x.id === id);
+    if (index === -1) {
+      // handle error
+      console.log("error: index= -1");
+    } else {
+      // console.log("New student attr:", studentAttributes);
+      var newStudents = [
+        ...students.slice(0, index),
+        Object.assign({}, students[index], studentAttributes),
+        ...students.slice(index + 1),
+      ];
+      // console.log("New students:", newStudents);
+      setStudents(newStudents);
     }
-    console.log(crList);
-  }, []);
+  };
+  const [updatedCrs, setUpdatedCrs] = useState({});
 
   // if(loading)
   //     return
 
-  //   console.log(data && data.Students);
 
   return (
     <Container maxWidth="lg" sx={{ my: 5 }}>
-      {data &&
-        data.Students.map((row, index) => (
-          <div key={row.id}>
-            {console.log(row.id + ": " + row.isCr+" -> "+crList[row.id])}
-            {/* {row.id} */}
-          </div>
-        ))}
-      {data ? (
+            <Typography
+            sx={{
+                fontSize: 40,
+                textAlign: "center",
+                fontWeight: 500,
+                color: "#8c47ed"
+            }}
+            gutterBottom
+            >
+            Student List
+            </Typography>
+      {students ? (
         <TableContainer component={Paper}>
           <Table
             sx={{ minWidth: 350, maxWidth: 350 }}
@@ -155,20 +165,24 @@ const ViewStudents = () => {
           >
             <TableHead>
               <TableRow>
-                <TableCell>Student Name</TableCell>
-                <TableCell align="right">Is CR</TableCell>
-                <TableCell align="right">Is Placed</TableCell>
-                <TableCell align="right">Programme</TableCell>
-                <TableCell align="right">Branch</TableCell>
-                <TableCell align="right">ID</TableCell>
-                <TableCell align="right">Grad Year</TableCell>
-                <TableCell align="right">Gender</TableCell>
-                <TableCell align="right">Age</TableCell>
-                <TableCell align="right">CPI</TableCell>
+                <TableCell style={{fontWeight: 600}}>Student Name</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Is CR</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Is Placed</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Programme</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Branch</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>ID</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Grad Year</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Gender</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Age</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>CPI</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>10th</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>12th</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Mobile</TableCell>
+                <TableCell align="right" style={{fontWeight: 600}}>Resume Link</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.Students.map((row, index) => (
+              {students.map((row, index) => (
                 <TableRow
                   key={index}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -178,22 +192,18 @@ const ViewStudents = () => {
                   </TableCell>
                   <TableCell align="right">
                     <Checkbox
-                      checked={crList[row.id]}
+                      checked={row.isCr}
                       onChange={(e) => {
-                        var crList_ = crList;
-                        crList_[row.id] = !crList_[row.id];
-                        setCrList(crList_);
+                        var newStudentAttr = { "isCr": !row.isCr }; //...students[index],
+                        updateStudent(row.id, newStudentAttr);
                         var updatedCrs_ = updatedCrs;
-                        updatedCrs_[row.id] = crList[row.id];
+                        updatedCrs_[row.id] = students[index].isCr;
                         setUpdatedCrs(updatedCrs_);
                         console.log(updatedCrs);
                       }}
                       color="success"
                     />
                   </TableCell>
-                  {/* isDreamPlaced: null,
-isNormalPlaced: null,
-isSuperPlaced: null, */}
                   <TableCell>
                     {row.isNormalPlaced
                       ? row.isDreamPlaced
@@ -218,6 +228,23 @@ isSuperPlaced: null, */}
                   <TableCell align="right">
                     {row.CPI ? row.CPI : "N/A"}
                   </TableCell>
+                  <TableCell align="right">
+                    {row.column_10th ? row.column_10th : "N/A"}
+                  </TableCell>
+                  <TableCell align="right">
+                    {row.column_12th ? row.column_12th : "N/A"}
+                  </TableCell>
+                  <TableCell align="right">
+                    {row.mobileNumber ? row.mobileNumber : "N/A"}
+                  </TableCell>
+                  <TableCell align="right">
+                      
+                    {row.resumeLink ? 
+                      <div styles={{color: "#4287f5"}}>
+                          <a href={row.resumeLink} > Link</a>
+                      </div>
+                     : "N/A"}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -226,7 +253,15 @@ isSuperPlaced: null, */}
       ) : (
         "Loading..."
       )}
-      <Button onClick={()=>(console.log(crList))}>Log crList</Button>
+      <hr/>
+      <Button 
+        onClick={()=>{}}
+        variant='contained'
+        color="success"
+        sx={{marginTop:3, marginLeft:120}}
+      >
+        Save Changes
+      </Button>
     </Container>
   );
 };
