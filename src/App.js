@@ -13,52 +13,8 @@ import Logout from './Screens/Logout';
 import AdminDashboard from './Screens/Admin/Dashboard/Dashboard';
 import ViewStudents from './Screens/Admin/ViewStudents/ViewStudents';
 
-function App() {
 
 function App() {
-	const router = createBrowserRouter([
-		{
-			path: "/",
-			element: <Home />,
-		},
-		{
-			path: "/hr/register",
-			element: <RegisterHR />,
-		},
-		{
-			path: "/admin/register",
-			element: <RegisterAdmin />,
-		},
-		{
-			path: "/hr/createjob",
-			element: <CreateJob />,
-		},
-		{
-			path: "/admin/tpopolicy",
-			element: <TpoPolicy />,
-		},
-		{
-			path: "/admin/profile",
-			element: <ProfileScreen />,
-		},
-		{
-			path: "/hr/profile",
-			element: <HRProfileScreen />,
-		},
-		{
-			path: "/login",
-			element: <Login />,
-		},
-		{
-			path: "/admin/dashboard",
-			element: <AdminDashboard />
-		},
-		{
-			path: "/admin/view_students",
-			element: <ViewStudents />
-		}
-	]);
-
 	return (
 		<div >
 			<BrowserRouter>
@@ -83,6 +39,8 @@ function App() {
 						<Route path='register' element={<RegisterAdmin />} />
 						<Route path='tpopolicy' element={<TpoPolicy />} />
 						<Route path='profile' element={<ProfileScreen />} />
+						<Route path='dashboard' element={<AdminDashboard />} />
+						<Route path='view_students' element={<ViewStudents />} />
 						<Route path='*' element={<h1>404 page!</h1>} />
 					</Route>
 				</Routes>
