@@ -22,8 +22,13 @@ export const hrSidebar = [
 		// icon: <BiotechIcon className={styles.listIcon} />,
 	},
 	{
-		name: "Feebback",
-		url: "/hr/feedback",
+		name: "Jobs Created",
+		url: "/hr/createdjobs",
+		// icon: <Person2Icon className={styles.listIcon} />,
+	},
+	{
+		name: "Profile",
+		url: "/hr/profile",
 		// icon: <Person2Icon className={styles.listIcon} />,
 	},
 ];
