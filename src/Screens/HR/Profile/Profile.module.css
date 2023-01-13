@@ -21,7 +21,7 @@
 	width: 100%;
 	align-items: center;
 	justify-content: space-between;
-	background-color: rgba(183, 216, 240, 0.4);
+	background-color: rgba(234, 229, 151, 0.4);
 }
 
 .user {
@@ -52,7 +52,7 @@
 	margin-top: 10px;
 	padding: 6px 30px;
 	color: white;
-	background-color: #44b4d9;
+	background-color: #cac96c;
 	border: 0;
 	border-radius: 20px;
 	align-items: center;

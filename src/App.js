@@ -33,6 +33,8 @@ function App() {
 						<Route path='register' element={<RegisterHR />} />
 						<Route path='createjob' element={<CreateJob />} />
 						<Route path='profile' element={<HRProfileScreen />} />
+						{/* <Route path='results' element={< />} /> */}
+
 						<Route path='createdjobs'  >
 							<Route index element={<PastJobs />} />
 							<Route path=':jobId' element={<Job />} >
@@ -50,7 +52,7 @@ function App() {
 						<Route path='register' element={<RegisterAdmin />} />
 						<Route path='tpopolicy' element={<TpoPolicy />} />
 						<Route path='profile' element={<ProfileScreen />} />
-						<Route path='view_students' element={<ViewStudents />} />
+						<Route path='studentlist' element={<ViewStudents />} />
 						<Route path='*' element={<h1>404 page!</h1>} />
 					</Route>
 				</Routes>
