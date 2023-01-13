@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache ,createHttpLink} from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-  uri: process.env.GRAPHQL_URL,
+  uri: process.env.REACT_APP_GRAPHQL_URL,
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -13,7 +13,7 @@ const authLink = setContext((_, { headers }) => {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : "",
-      "x-hasura-admin-secret" : process.env.GRAPHQL_SECRET,
+      "x-hasura-admin-secret" : process.env.REACT_APP_GRAPHQL_SECRET,
     }
   }
 });
