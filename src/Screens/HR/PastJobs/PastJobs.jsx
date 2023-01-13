@@ -32,10 +32,6 @@ const PastJobs = () => {
         variables: { "_eq": jobId }
     });
 
-    const {loading: rloading, error: rerror, data: rdata } = useQuery(GET_RECRUITER_INFO, {
-        variables: { "_eq": jobId }
-    });
-
     useEffect(() => {
         const role = "";
         supabase.auth.getSession().then((res) => {
@@ -53,41 +49,51 @@ const PastJobs = () => {
 
 
     }, [jobId]);
-    console.log(rdata, rerror, "jobs")
+    // console.log(rdata, rerror, "jobs")
 
     return (
         <div>
             <div style={{ display: "flex" }}>
                 <Sidebar />
-                <div style={{ display: "flex", width: "70", flexWrap: "wrap" }}>
-                    {data?.Job_Details.map((job, index) => (
-                        // console.log(job)
-                        <div style={{ borderRadius: "3px", backgroundColor: "#edd185", width: "300px", height: "220px", padding: "20px", margin: "20px" }} key={index}>
-                            <div>
-                                <p style={{ fontSize: "17px", color: "white" }}><strong>{job.title}</strong></p>
+                <div>
+                    <div style={{fontSize: "22px",textAlign: "center",padding: "10px",fontWeight: "500"}}>
+                    <p>Past Created Job</p>
+                    </div>
+                    <div style={{ display: "flex", width: "70", flexWrap: "wrap" }}>
+                        {
+                            data?.Job_Details.length==0 ? <p>No Previous jobs exits...</p> : ""
+                        }
+
+                        {data?.Job_Details.map((job, index) => (
+                            // console.log(job)
+                            <div style={{ borderRadius: "3px", backgroundColor: "#edd185", width: "300px", height: "220px", padding: "20px", margin: "20px" }} key={index}>
                                 <div>
-                                    <p style={{ fontSize: "15px", color: "white", marginTop: "10px" }}>{job.description}</p>
+                                    <p style={{ fontSize: "17px", color: "white" }}><strong>Title : {job.title}</strong></p>
+                                    <div>
+                                        <p style={{ fontSize: "15px", color: "white", marginTop: "10px" }}>Description: {job.description}</p>
+                                    </div>
+
+                                    <div>
+                                        <p style={{ fontSize: "15px", color: "white", marginTop: "10px" }}>Salary :{job.salary}</p>
+                                    </div>
+
+                                    <button style={{ backgroundColor: "#f2c341", width: "180px", padding: "10px", margin: "20px", borderRadius: "20px" }}
+
+                                        rel={"noopener noreferrer"}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            navigate(
+                                                `/hr/createdjobs/${job.id}`
+                                            );
+                                        }}>
+                                        View Jobs
+                                    </button>
                                 </div>
-
-                                <div>
-                                    <p style={{ fontSize: "15px", color: "white", marginTop: "10px" }}>{job.salary}</p>
-                                </div>
-
-                                <button style={{ backgroundColor: "#f2c341", width: "180px", padding: "10px", margin: "20px", borderRadius: "20px" }}
-
-                                    rel={"noopener noreferrer"}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        navigate(
-                                            `/hr/createdjobs/${job.id}`
-                                        );
-                                    }}>
-                                    View Jobs
-                                </button>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
+
             </div>
         </div>
     )
