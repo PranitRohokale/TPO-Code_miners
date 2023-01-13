@@ -16,7 +16,6 @@ const ASidebar = ({ value }) => {
 			<div>
 				<ul className={styles.sidebarList}>
 					{adminSidebar.map((item, index) => {
-						// console.log(item,"item")
 						return (
 							<li key={item.name}>
 								<div

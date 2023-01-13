@@ -19,38 +19,6 @@ const ProfileScreen = () => {
     });
   }, []);
 
-  // const fetchUser = useCallback(async (account) => {
-  // 	console.log("hello");
-  // 	const data = await checkRole(account);
-  // 	if (data === 0) {
-  // 		openModal(true);
-  // 	} else if (data === 2) {
-  // 		navigate("/hospital/profile");
-  // 	} else if (data === 3) {
-  // 		navigate("/org/profile");
-  // 	} else {
-  // 		const data = await fetchUserByAddress(account);
-  // 		setUser({
-  // 			userAdd: data.userAdd,
-  // 			name: data.name,
-  // 			emailId: data.emailId,
-  // 			mobileNo: data.mobileNo,
-  // 			personalAdd: data.personalAdd,
-  // 			gender:
-  // 				data.gender.toNumber() === 0
-  // 					? "Male"
-  // 					: data.gender.toNumber() === 1
-  // 					? "Female"
-  // 					: "Cannot specify",
-  // 			dob: data.dob,
-  // 		});
-  // 	}
-  // });
-
-  // useEffect(() => {
-  // 	// fetchUser(currentAccount);
-  // }, []);
-
   const [user, setUser] = useState({
     firstName: "",
     middleName: "",

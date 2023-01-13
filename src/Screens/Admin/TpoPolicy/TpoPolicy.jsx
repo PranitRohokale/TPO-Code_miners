@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../../../Utils/supabase.config";
 import { useNavigate } from "react-router-dom";
+import ASidebar from "../../../Components/adminSidebar/ASidebar";
 
 
 // import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
@@ -44,6 +45,9 @@ const TpoPolicy = () => {
   const [nonCircuitDream, setNonCircuitDream] = useState("");
 
   const handleSubmit = (e) => {
+    if (!(academicYear && circuitDream && circuitNormal && nonCircuitDream && nonCircuitNormal))
+    return alert("All fields required");
+    
     e.preventDefault();
     console.log(
       academicYear,
@@ -55,7 +59,9 @@ const TpoPolicy = () => {
   };
 
   return (
-    <div style={customStyles}>
+    <div style={{display: "flex"}}>
+<ASidebar/>
+<div style={{width: "100%"}}>
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
         <div className="text-center text-2xl font-bold">TPO Policy</div>
         <div className="mt-4 sm:w-full sm:max-w-2xl m-auto">
@@ -171,6 +177,7 @@ const TpoPolicy = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

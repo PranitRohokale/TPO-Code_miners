@@ -39,7 +39,9 @@ const RegisterAdmin = () => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
-    // const { error } = await supabase.auth.signOut();
+    // const { error } = await supabase.auth.signOut(); 
+    if (!(firstName && middleName && lastName && emailId && gender && dob && password))
+    return alert("All fields required");
 
     e.preventDefault();
     console.log(
