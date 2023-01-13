@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ASidebar from "../../../Components/adminSidebar/ASidebar";
 import Sidebar from "../../../Components/hrSidebar/Sidebar";
-// import Sidebar from "../../../components/Sidebar/Sidebar";
 import styles from "./Profile.module.css";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../../Utils/supabase.config";

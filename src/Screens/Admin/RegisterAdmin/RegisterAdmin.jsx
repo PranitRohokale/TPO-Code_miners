@@ -49,6 +49,7 @@ const RegisterAdmin = () => {
 
     e.preventDefault();
     console.log(
+      
       firstName,
       middleName,
       lastName,
