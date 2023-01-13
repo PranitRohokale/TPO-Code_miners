@@ -10,8 +10,54 @@ import ProfileScreen from './Screens/Admin/Profile/Profile';
 import HRProfileScreen from './Screens/HR/Profile/Profile';
 import Login from './Screens/Login/Login';
 import Logout from './Screens/Logout';
+import AdminDashboard from './Screens/Admin/Dashboard/Dashboard';
+import ViewStudents from './Screens/Admin/ViewStudents/ViewStudents';
 
 function App() {
+
+function App() {
+	const router = createBrowserRouter([
+		{
+			path: "/",
+			element: <Home />,
+		},
+		{
+			path: "/hr/register",
+			element: <RegisterHR />,
+		},
+		{
+			path: "/admin/register",
+			element: <RegisterAdmin />,
+		},
+		{
+			path: "/hr/createjob",
+			element: <CreateJob />,
+		},
+		{
+			path: "/admin/tpopolicy",
+			element: <TpoPolicy />,
+		},
+		{
+			path: "/admin/profile",
+			element: <ProfileScreen />,
+		},
+		{
+			path: "/hr/profile",
+			element: <HRProfileScreen />,
+		},
+		{
+			path: "/login",
+			element: <Login />,
+		},
+		{
+			path: "/admin/dashboard",
+			element: <AdminDashboard />
+		},
+		{
+			path: "/admin/view_students",
+			element: <ViewStudents />
+		}
+	]);
 
 	return (
 		<div >
