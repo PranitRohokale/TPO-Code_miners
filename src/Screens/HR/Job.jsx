@@ -35,14 +35,7 @@ const Job = () => {
                     <p class="text-gray-500 text-lg mb-6 pb-2 ">
                       Salary : {data?.Job_Details_by_pk?.salary}
                     </p>
-                    <button
-                      type="button"
-                      class="inline-block px-7 py-3 bg-red-600 text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
-                      data-mdb-ripple="true"
-                      data-mdb-ripple-color="light"
-                    >
-                      Learn more
-                    </button>
+                    
                   </div>
                 </div>
               </div>
