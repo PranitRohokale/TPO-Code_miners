@@ -17,6 +17,8 @@ import Job from './Screens/HR/Job';
 import ApplicantList from './Screens/HR/ApplicantList';
 import RoundDetails from './Screens/HR/RoundDetail';
 import Schedule from './Screens/Admin/Schedule';
+import CreateRound from './Screens/HR/CreateRound';
+
 
 function App() {
 	return (
@@ -40,6 +42,7 @@ function App() {
 							<Route path=':jobId' element={<Job />} >
 								<Route path='applicantList' element={<ApplicantList />} />
 								<Route path=':roundId' element={<RoundDetails />} />
+								<Route path='createRound' element={<CreateRound />} />
 							</Route>
 						</Route>
 						<Route path='*' element={<h1>404 page!</h1>} />
