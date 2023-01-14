@@ -19,13 +19,14 @@ import RoundDetails from './Screens/HR/RoundDetail';
 import Schedule from './Screens/Admin/Schedule';
 import CreateRound from './Screens/HR/CreateRound';
 import Error from './Screens/Error';
+import MainHome from './Screens/Home/MainHome';
 
 function App() {
 	return (
 		<div >
 			<BrowserRouter>
 				<Routes>
-					<Route path='/' element={<Home />} />
+					<Route path='/' element={<MainHome />} />
 					<Route path='/login' element={<Login />} />
 				</Routes>
 				{/* hr routes goes here */}
