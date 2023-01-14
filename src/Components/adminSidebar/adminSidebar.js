@@ -41,5 +41,11 @@ export const adminSidebar = [
 		url: "/admin/blockstudents",
 		// icon: <Person2Icon className={styles.listIcon} />,
 	},
+	{
+		name: "Logout",
+		url: "/logout",
+		// icon: <Person2Icon className={styles.listIcon} />,
+	},
+	
 	
 ];
