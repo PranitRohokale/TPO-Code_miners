@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import Sidebar from "../../Components/hrSidebar/Sidebar";
-import { GET_JOB_INFO_BY_JOBID_QUERY } from "../../Graphql/Queries/recruiter";
+import {
+  GET_JOB_INFO_BY_JOBID_QUERY,
+  GET_ROUNDS_INFO_BY_APPLICATIONID_QUERY,
+} from "../../Graphql/Queries/recruiter";
 import { useQuery } from "@apollo/client";
 
 const Job = () => {
   const { jobId } = useParams();
+  const [rounds, setRounds] = useState([]);
 
   const { loading, error, data } = useQuery(GET_JOB_INFO_BY_JOBID_QUERY, {
     variables: { id: jobId },
   });
 
-  console.log(jobId, data?.Job_Details_by_pk, "ddddddd");
+  const { error: eError } = useQuery(GET_ROUNDS_INFO_BY_APPLICATIONID_QUERY, {
+    onCompleted: (data) => setRounds(data.Rounds),
+    variables: {
+      applicationId: jobId,
+    },
+  });
+
+  console.log(rounds, "ddddddd");
 
   return (
     <div style={{ display: "flex" }}>
@@ -35,7 +46,6 @@ const Job = () => {
                     <p class="text-gray-500 text-lg mb-6 pb-2 ">
                       Salary : {data?.Job_Details_by_pk?.salary}
                     </p>
-                    
                   </div>
                 </div>
               </div>
@@ -52,24 +62,25 @@ const Job = () => {
                 </button>
               </Link>
 
-              {[1, 2, 3].map((roundId, index) => {
-                return (
-                  <Link key={index} to={`/hr/createdjobs/${jobId}/${roundId}`}>
-                    <button
-                      type="button"
-                      class="inline-block px-6 py-2.5 bg-purple-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-purple-600 hover:shadow-lg focus:bg-purple-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-700 active:shadow-lg transition duration-150 ease-in-out"
-                    >
-                      Round : {roundId}
-                    </button>
-                  </Link>
-                );
-              })}
+              {rounds &&
+                rounds.map(({ id, roundNo }, index) => {
+                  return (
+                    <Link key={index} to={`/hr/createdjobs/${jobId}/${id}`}>
+                      <button
+                        type="button"
+                        class="inline-block px-6 py-2.5 bg-purple-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-purple-600 hover:shadow-lg focus:bg-purple-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-700 active:shadow-lg transition duration-150 ease-in-out"
+                      >
+                        Round : {roundNo}
+                      </button>
+                    </Link>
+                  );
+                })}
 
               <button
                 type="button"
                 class="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
               >
-                Total Rounds : 0
+                Total Rounds : {rounds?.length ? rounds?.length : 0}
               </button>
 
               <Link to={`/hr/createdjobs/${jobId}/createRound`}>

@@ -83,6 +83,24 @@ query getJobInfoByJobId($id: bigint = "") {
 }
 `;
 
+const GET_ROUNDS_INFO_BY_APPLICATIONID_QUERY = gql`
+  query getRoundsInfoByApplicationid($applicationId: bigint = "") {
+    Rounds(where: {jobId: {_eq: $applicationId}}, order_by: {inserted_at: asc}) {
+      id
+      isFinal
+      roundDetail
+      roundNo
+      roundTime
+      status
+    }
+    Rounds_aggregate(where: {jobId: {_eq: $applicationId}}) {
+      aggregate {
+        totalRounds: count
+      }
+    }
+  }
+`;
+
 
 // const GET_ALL_DETAILS_OF_ONE_ROUND_QUERY = gql`
 // query getAllDetailsOfOneRound($roundId: bigint = "") {
@@ -105,5 +123,6 @@ export {
     GET_JOB_CREATED_BY_RECRUTER_QUERY,
     GET_ALL_DETAILS_OF_ONE_ROUND_QUERY,
     GET_APPLICANT_LIST_BY_JOB_ID_QUERY,
-    GET_JOB_INFO_BY_JOBID_QUERY
+    GET_JOB_INFO_BY_JOBID_QUERY,
+    GET_ROUNDS_INFO_BY_APPLICATIONID_QUERY
 }

@@ -13,6 +13,8 @@ import {
   Checkbox,
   Grid,
 } from "@mui/material";
+import { useParams } from "react-router";
+
 
 import { Link } from "react-router-dom";
 import RoundHeaderCard from "../../../../Components/Rounds/RoundsHeaderCard";
@@ -27,7 +29,9 @@ const ApplicantListTable = ({
 }) => {
 
     const requiredArray = ['roundDetail', 'roundTime', 'status']
+    const { jobId, roundId } = useParams();
 
+    console.log(roundId);
 
 // const roundAttrs= Object.entries(roundInfo).map(([key, value]) => ({key,value}));
   return (
@@ -120,24 +124,13 @@ const ApplicantListTable = ({
                       color="success"
                     />
                   </TableCell>
-                  {/* <TableCell>{row.programme ? row.programme : "N/A"}</TableCell> */}
                   <TableCell>{row.Student.branch ? row.Student.branch : "N/A"}</TableCell>
-                  {/* <TableCell align="right">
-                    {row.clgId ? row.clgId : "N/A"}
-                  </TableCell>
-                  <TableCell align="right">
-                    {row.gradYear ? row.gradYear : "N/A"}
-                  </TableCell> */}
+                  
                   <TableCell>{row.Student.gender ? row.Student.gender : "N/A"}</TableCell>
                   <TableCell align="right">
                     {row.Student.CPI ? row.Student.CPI : "N/A"}
                   </TableCell>
-                  {/* <TableCell align="right">
-                    {row.column_10th ? row.column_10th : "N/A"}
-                  </TableCell>
-                  <TableCell align="right">
-                    {row.column_12th ? row.column_12th : "N/A"}
-                  </TableCell> */}
+                  
                   <TableCell align="right">
                     {row.Student.mobileNumber ? row.Student.mobileNumber : "N/A"}
                   </TableCell>
@@ -158,15 +151,6 @@ const ApplicantListTable = ({
       ) : (
         "Loading..."
       )}
-      <hr />
-      <Button
-        onClick={() => {}}
-        variant="contained"
-        color="success"
-        sx={{ marginTop: 3, marginLeft: 100 }}
-      >
-        Confirm Selection
-      </Button>
     </Container>
   );
 };
