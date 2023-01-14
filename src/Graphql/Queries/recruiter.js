@@ -30,6 +30,43 @@ const GET_JOB_CREATED_BY_RECRUTER_QUERY = gql`
 }
 `;
 
+const GET_APPLICANT_LIST_BY_JOB_ID_QUERY = gql`
+  query getApplicantListByJobId($jobId: bigint = "") {
+    Applications(where: {jobId: {_eq: $jobId}}, order_by: {insertted_at: desc}) {
+      id
+      isAccepted
+      isSelected
+      resumeLink
+      Student {
+        id
+        CPI
+        branch
+        clgEmail
+        gender
+        firstName
+        middleName
+        lastName
+        mobileNumber
+      }
+    }
+  }
+`;
+
+const GET_ALL_DETAILS_OF_ONE_ROUND_QUERY = gql`
+query getAllDetailsOfOneRound($roundId: bigint = "") {
+  Rounds_by_pk(id: $roundId) {
+    id
+    jobId
+    companyName
+    isFinal
+    roundDetail
+    roundNo
+    roundTime
+    status
+    shortlistStudentList
+  }
+}
+`;
 const GET_JOB_INFO_BY_JOBID_QUERY = gql`
 query getJobInfoByJobId($id: bigint = "") {
   Job_Details_by_pk(id: $id) {
@@ -47,9 +84,26 @@ query getJobInfoByJobId($id: bigint = "") {
 `;
 
 
+// const GET_ALL_DETAILS_OF_ONE_ROUND_QUERY = gql`
+// query getAllDetailsOfOneRound($roundId: bigint = "") {
+//   Rounds_by_pk(id: $roundId) {
+//     id
+//     jobId
+//     companyName
+//     isFinal
+//     roundDetail
+//     roundNo
+//     roundTime
+//     status
+//     shortlistStudentList
+//   }
+// }
+// `;
 
 export {
     GET_RECRUITER_INFO,
     GET_JOB_CREATED_BY_RECRUTER_QUERY,
+    GET_ALL_DETAILS_OF_ONE_ROUND_QUERY,
+    GET_APPLICANT_LIST_BY_JOB_ID_QUERY,
     GET_JOB_INFO_BY_JOBID_QUERY
 }
