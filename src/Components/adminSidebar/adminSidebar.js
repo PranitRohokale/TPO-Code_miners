@@ -7,24 +7,9 @@
 import styles from "./Sidebar.module.css";
 export const adminSidebar = [
 	{
-		name: "Send Invitations",
-		url: "/admin/sendinvite",
-		// icon: <LocalHospitalIcon className={styles.listIcon} />,
-	},
-	{
-		name: "Generate analytics",
-		url: "/admin/applicants",
-		// icon: <HistoryEduIcon className={styles.listIcon} />,
-	},
-	{
-		name: "Tpo Policy Update",
-		url: "/admin/policyupdate",
+		name: "Tpo Policy",
+		url: "/admin/tpopolicy",
 		// icon: <BiotechIcon className={styles.listIcon} />,
-	},
-	{
-		name: "Block Students",
-		url: "/admin/blockstudents",
-		// icon: <Person2Icon className={styles.listIcon} />,
 	},
 	{
 		name: "Student list",
@@ -36,4 +21,25 @@ export const adminSidebar = [
 		url: "/admin/profile",
 		// icon: <Person2Icon className={styles.listIcon} />,
 	},
+	{
+		name: "Schedule",
+		url: "/admin/schedule",
+		// icon: <Person2Icon className={styles.listIcon} />,
+	},
+	{
+		name: "Send Invitations",
+		url: "/admin/sendinvite",
+		// icon: <LocalHospitalIcon className={styles.listIcon} />,
+	},
+	{
+		name: "Generate analytics",
+		url: "/admin/applicants",
+		// icon: <HistoryEduIcon className={styles.listIcon} />,
+	},
+	{
+		name: "Block Students",
+		url: "/admin/blockstudents",
+		// icon: <Person2Icon className={styles.listIcon} />,
+	},
+	
 ];

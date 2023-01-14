@@ -25,6 +25,7 @@ import { Link } from "react-router-dom";
 // import StudentsTable from "../../../Components/AdminViewStudents/StudentsTable";
 import { GET_ALL_STUDENTS } from "../../../Graphql/Queries/AdminViewStudents/adminViewStudents";
 import { useQuery } from "@apollo/client";
+import ASidebar from "../../../Components/adminSidebar/ASidebar";
 
 // function createStudentData(
 //     name,
@@ -145,6 +146,8 @@ const ViewStudents = () => {
 
 
   return (
+    <div style={{display: "flex"}}>
+      <ASidebar/>
     <Container maxWidth="lg" sx={{ my: 5 }}>
             <Typography
             sx={{
@@ -263,6 +266,7 @@ const ViewStudents = () => {
         Save Changes
       </Button>
     </Container>
+    </div>
   );
 };
 

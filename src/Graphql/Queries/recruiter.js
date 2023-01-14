@@ -67,10 +67,43 @@ query getAllDetailsOfOneRound($roundId: bigint = "") {
   }
 }
 `;
+const GET_JOB_INFO_BY_JOBID_QUERY = gql`
+query getJobInfoByJobId($id: bigint = "") {
+  Job_Details_by_pk(id: $id) {
+    companyName
+    description
+    endDateToApply
+    id
+    locations
+    recruterId
+    noOfRounds
+    salary
+    title
+  }
+}
+`;
+
+
+// const GET_ALL_DETAILS_OF_ONE_ROUND_QUERY = gql`
+// query getAllDetailsOfOneRound($roundId: bigint = "") {
+//   Rounds_by_pk(id: $roundId) {
+//     id
+//     jobId
+//     companyName
+//     isFinal
+//     roundDetail
+//     roundNo
+//     roundTime
+//     status
+//     shortlistStudentList
+//   }
+// }
+// `;
 
 export {
     GET_RECRUITER_INFO,
     GET_JOB_CREATED_BY_RECRUTER_QUERY,
     GET_ALL_DETAILS_OF_ONE_ROUND_QUERY,
-    GET_APPLICANT_LIST_BY_JOB_ID_QUERY
+    GET_APPLICANT_LIST_BY_JOB_ID_QUERY,
+    GET_JOB_INFO_BY_JOBID_QUERY
 }

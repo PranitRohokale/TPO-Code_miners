@@ -8,9 +8,9 @@ const Sidebar = ({ value }) => {
 	return (
 		<div className={styles.sidebar_wrapper}>
 			<Link to="/">
-				<div className={styles.logoDiv}>
-
-				</div>
+				<div className={styles.logoDiv} style={{width:"5em", height:'3em' , margin:'auto ', marginBottom:"3em"}}>
+					<img src="https://img.collegepravesh.com/2016/01/VJTI-Mumbai-Logo.png"  alt="" />
+				</div>	
 			</Link>
 			<hr className="bg-gray-200 border-0" />
 			<div>
@@ -24,7 +24,6 @@ const Sidebar = ({ value }) => {
 								>
 									{/* {item.icon} */}
 									<Link style={{ textDecoration: "none" }} to={item.url}>{item.name}</Link>
-
 								</div>
 							</li>
 						);

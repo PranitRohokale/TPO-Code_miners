@@ -16,6 +16,8 @@ import PastJobs from './Screens/HR/PastJobs/PastJobs';
 import Job from './Screens/HR/Job';
 import ApplicantList from './Screens/HR/ApplicantList';
 import RoundDetails from './Screens/HR/RoundDetail';
+import Schedule from './Screens/Admin/Schedule';
+import CreateRound from './Screens/HR/CreateRound';
 
 
 function App() {
@@ -33,11 +35,14 @@ function App() {
 						<Route path='register' element={<RegisterHR />} />
 						<Route path='createjob' element={<CreateJob />} />
 						<Route path='profile' element={<HRProfileScreen />} />
+						{/* <Route path='results' element={< />} /> */}
+
 						<Route path='createdjobs'  >
 							<Route index element={<PastJobs />} />
 							<Route path=':jobId' element={<Job />} >
 								<Route path='applicantList' element={<ApplicantList />} />
 								<Route path=':roundId' element={<RoundDetails />} />
+								<Route path='createRound' element={<CreateRound />} />
 							</Route>
 						</Route>
 						<Route path='*' element={<h1>404 page!</h1>} />
@@ -50,7 +55,8 @@ function App() {
 						<Route path='register' element={<RegisterAdmin />} />
 						<Route path='tpopolicy' element={<TpoPolicy />} />
 						<Route path='profile' element={<ProfileScreen />} />
-						<Route path='view_students' element={<ViewStudents />} />
+						<Route path='schedule' element={<Schedule />} />
+						<Route path='studentlist' element={<ViewStudents />} />
 						<Route path='*' element={<h1>404 page!</h1>} />
 					</Route>
 				</Routes>
