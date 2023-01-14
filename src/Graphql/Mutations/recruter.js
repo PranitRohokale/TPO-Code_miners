@@ -25,9 +25,20 @@ const CREATE_NEW_JOB_MUTATION = gql`
   }
 `;
 
+const CREATE_NEW_ROUND = gql`
+mutation createNewRound($object: Rounds_insert_input!) {
+  insert_Rounds_one(object: $object) {
+    id
+    roundNo
+    jobId
+    roundTime
+    shortlistStudentList
+  }
+}`
 
 
 export {
     CREATE_NEW_RECRUTERS_MUTATION,
-    CREATE_NEW_JOB_MUTATION
+    CREATE_NEW_JOB_MUTATION,
+    CREATE_NEW_ROUND
 }
