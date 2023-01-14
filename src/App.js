@@ -45,7 +45,7 @@ function App() {
 								<Route path='createRound' element={<CreateRound />} />
 							</Route>
 						</Route>
-						<Route path='*' element={<Error/>} />
+						<Route path='*' element={<Error />} />
 					</Route>
 				</Routes>
 				{/* admin routes goes here  */}
@@ -57,7 +57,7 @@ function App() {
 						<Route path='profile' element={<ProfileScreen />} />
 						<Route path='schedule' element={<Schedule />} />
 						<Route path='studentlist' element={<ViewStudents />} />
-						<Route path='*' element={<Error/>} />
+						<Route path='*' element={<Error />} />
 					</Route>
 				</Routes>
 				<Routes>
