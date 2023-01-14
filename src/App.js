@@ -18,7 +18,7 @@ import ApplicantList from './Screens/HR/ApplicantList';
 import RoundDetails from './Screens/HR/RoundDetail';
 import Schedule from './Screens/Admin/Schedule';
 import CreateRound from './Screens/HR/CreateRound';
-
+import Error from './Screens/Error';
 
 function App() {
 	return (
@@ -45,7 +45,7 @@ function App() {
 								<Route path='createRound' element={<CreateRound />} />
 							</Route>
 						</Route>
-						<Route path='*' element={<h1>404 page!</h1>} />
+						<Route path='*' element={<Error/>} />
 					</Route>
 				</Routes>
 				{/* admin routes goes here  */}
@@ -57,7 +57,7 @@ function App() {
 						<Route path='profile' element={<ProfileScreen />} />
 						<Route path='schedule' element={<Schedule />} />
 						<Route path='studentlist' element={<ViewStudents />} />
-						<Route path='*' element={<h1>404 page!</h1>} />
+						<Route path='*' element={<Error/>} />
 					</Route>
 				</Routes>
 				<Routes>
