@@ -28,11 +28,28 @@ const GET_JOB_CREATED_BY_RECRUTER_QUERY = gql`
     recruterId
   }
 }
-
 `;
+
+const GET_JOB_INFO_BY_JOBID_QUERY = gql`
+query getJobInfoByJobId($id: bigint = "") {
+  Job_Details_by_pk(id: $id) {
+    companyName
+    description
+    endDateToApply
+    id
+    locations
+    recruterId
+    noOfRounds
+    salary
+    title
+  }
+}
+`;
+
 
 
 export {
     GET_RECRUITER_INFO,
-    GET_JOB_CREATED_BY_RECRUTER_QUERY
+    GET_JOB_CREATED_BY_RECRUTER_QUERY,
+    GET_JOB_INFO_BY_JOBID_QUERY
 }

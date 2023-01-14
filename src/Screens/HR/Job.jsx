@@ -2,11 +2,18 @@ import React from "react";
 import { Outlet, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import Sidebar from "../../Components/hrSidebar/Sidebar";
+import { GET_JOB_INFO_BY_JOBID_QUERY } from "../../Graphql/Queries/recruiter";
+import { useQuery } from "@apollo/client";
+
 
 const Job = () => {
   const { jobId } = useParams();
 
-  console.log(jobId);
+  const { loading, error, data } = useQuery(GET_JOB_INFO_BY_JOBID_QUERY, {
+    variables: { "id": jobId }
+  });
+
+  console.log(jobId,data?.Job_Details_by_pk,"ddddddd");
 
   return (
     <div style={{ display: "flex" }}>
@@ -19,12 +26,13 @@ const Job = () => {
                 <div class="grow-0 shrink-0 basis-auto w-full md:w-12/12">
                   <div class="px-2 py-4 md:px-12">
                     <h2 class="text-3xl font-bold mb-6">
-                      <span class="text-red-600">"Spicy life"</span> project
+                      <span class="text-red-600">{data?.Job_Details_by_pk?.title}</span>
                     </h2>
-                    <p class="text-gray-500 mb-6 pb-2">
-                      Nunc tincidunt vulputate elit. Mauris varius purus
-                      malesuada neque iaculis malesuada. Aenean gravida magna
-                      orci, non efficitur est porta id. Donec magna diam.
+                    <p class="text-gray-500 text-lg mb-6 pb-2 ">
+                    {data?.Job_Details_by_pk?.description}
+                    </p>
+                    <p class="text-gray-500 text-lg mb-6 pb-2 ">
+                    Salary : {data?.Job_Details_by_pk?.salary}
                     </p>
                     <button
                       type="button"

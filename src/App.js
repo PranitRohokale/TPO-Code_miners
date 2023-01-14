@@ -16,7 +16,7 @@ import PastJobs from './Screens/HR/PastJobs/PastJobs';
 import Job from './Screens/HR/Job';
 import ApplicantList from './Screens/HR/ApplicantList';
 import RoundDetails from './Screens/HR/RoundDetail';
-
+import Schedule from './Screens/Admin/Schedule';
 
 function App() {
 	return (
@@ -52,6 +52,7 @@ function App() {
 						<Route path='register' element={<RegisterAdmin />} />
 						<Route path='tpopolicy' element={<TpoPolicy />} />
 						<Route path='profile' element={<ProfileScreen />} />
+						<Route path='schedule' element={<Schedule />} />
 						<Route path='studentlist' element={<ViewStudents />} />
 						<Route path='*' element={<h1>404 page!</h1>} />
 					</Route>

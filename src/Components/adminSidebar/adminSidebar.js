@@ -22,6 +22,11 @@ export const adminSidebar = [
 		// icon: <Person2Icon className={styles.listIcon} />,
 	},
 	{
+		name: "Schedule",
+		url: "/admin/schedule",
+		// icon: <Person2Icon className={styles.listIcon} />,
+	},
+	{
 		name: "Send Invitations",
 		url: "/admin/sendinvite",
 		// icon: <LocalHospitalIcon className={styles.listIcon} />,
