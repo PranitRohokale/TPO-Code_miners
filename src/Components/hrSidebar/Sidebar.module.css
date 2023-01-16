@@ -1,6 +1,6 @@
 .sidebar_wrapper {
 	display: flex;
-	width:20%;
+	width:450px;
 	min-height: 100vh;
 	flex-direction: column;
 	padding: 20px 10px;

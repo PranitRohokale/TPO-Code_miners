@@ -57,13 +57,13 @@ const PastJobs = () => {
                     <div style={{fontSize: "22px",textAlign: "center",padding: "10px",fontWeight: "500"}}>
                     <p>Past Created Job</p>
                     </div>
-                    <div style={{ display: "flex", width: "70", flexWrap: "wrap" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap" }}>
                         {
                             data?.Job_Details.length==0 ? <p>No Previous jobs exits...</p> : ""
                         }
 
                         {data?.Job_Details.map((job, index) => (
-                            <div style={{ borderRadius: "3px", backgroundColor: "#f4dc7a", width: "300px", height: "210px", padding: "20px", margin: "20px" }} key={index}>
+                            <div style={{ borderRadius: "3px", backgroundColor: "#f4dc7a", width: "300px", height: "270px", padding: "20px", margin: "20px" }} key={index}>
                                 <div>
                                     <p style={{ fontSize: "17px", color: "white" }}><strong>Title : {job.title}</strong></p>
                                     <div>
