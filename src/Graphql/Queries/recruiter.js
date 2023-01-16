@@ -43,10 +43,16 @@ const GET_APPLICANT_LIST_BY_JOB_ID_QUERY = gql`
         branch
         clgEmail
         gender
+        clgId
         firstName
         middleName
         lastName
         mobileNumber
+        column_12th
+        gradYear
+        resumeLink
+        programme
+        personalEmail
       }
     }
   }
