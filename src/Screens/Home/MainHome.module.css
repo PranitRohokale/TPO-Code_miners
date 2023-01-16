@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;400&display=swap");
-:root {
-    --red: #f99fb6;
-    --white: #fff;
-    --black: #000;
-    --blue : rgb(67, 27, 231);
-  }
+
 .container{
     margin: 10px auto;
     max-width: 1140px;
@@ -17,7 +12,7 @@
 }
 
 .info{
-    background: linear-gradient(120deg,var(--white),var(--red));
+    background: linear-gradient(120deg,#fff,#f99fb6);
     padding: 1em;
 }
 
@@ -45,8 +40,8 @@
     display: inline-block;
     text-decoration: none;
     text-transform: uppercase; 
-    color: var(--white);
-    background-color: var(--blue);
+    color: #fff;
+    background-color: rgb(221, 217, 238);
     padding: .75em 2em;
     border-radius: 10px;
     min-width: 30%;
@@ -133,7 +128,7 @@
     text-transform: capitalize; 
     color: grey;
     margin: 5px;
-    color: var(--blue);
+    color: rgb(221, 217, 238);
 }
 .features .feature_card .icon{
     display: block;

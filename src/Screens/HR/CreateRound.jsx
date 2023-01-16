@@ -47,6 +47,7 @@ const CreateRound = () => {
           "roundDetail":roundDetails,
           "jobId": jobId,
           "status": "upcomming",
+          "companyName": "GroundUp",
           "shortlistStudentList": {
             "list" : []
           }
@@ -54,7 +55,7 @@ const CreateRound = () => {
       }
     })
     alert("round created")
-    navigate(-1)
+    navigate(`/hr/createdjobs/${jobId}/createRound`)
     // if (!(name && companyName && emailId && mobileNo && password))
     //   return alert("All fields required");
 

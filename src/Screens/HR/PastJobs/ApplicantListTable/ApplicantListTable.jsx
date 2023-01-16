@@ -41,7 +41,7 @@ const ApplicantListTable = ({
           fontSize: 40,
           textAlign: "center",
           fontWeight: 500,
-          color: "#8c47ed",
+          color: "#fff",
         }}
         gutterBottom
       >

@@ -15,6 +15,14 @@ export default function Header() {
 		// 	url: "/hospital/profile",
 		// },
 		{
+			name: "Recruiter",
+			url: "/hr/register",
+		},
+		{
+			name: "Admin",
+			url: "/admin/register",
+		},
+		{
 			name: "login",
 			url: "/login",
 		},

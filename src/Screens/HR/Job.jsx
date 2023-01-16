@@ -29,10 +29,10 @@ const Job = () => {
     <div style={{ display: "flex" }}>
       <Sidebar />
       <div style={{ width: "100%" }}>
-        <div class="container my-12 px-6 mx-auto">
-          <section class="mb-2 text-gray-800 text-center md:text-left">
+        <div class="container bg-white my-12 px-6 mx-auto">
+          <section class="mb-2 p-3 text-gray-800 text-center md:text-left">
             <div class="block rounded-lg shadow-lg bg-white">
-              <div class="flex flex-wrap items-center">
+              <div class="flex bg-white flex-wrap items-center">
                 <div class="grow-0 shrink-0 basis-auto w-full md:w-12/12">
                   <div class="px-2 py-4 md:px-12">
                     <h2 class="text-3xl font-bold mb-6">
@@ -51,7 +51,7 @@ const Job = () => {
               </div>
             </div>
           </section>
-          <section class="m-2  my-5 text-gray-800 text-center md:text-left">
+          <section class="m-2 p-3 my-5 text-gray-800 text-center md:text-left">
             <div class="flex space-x-5  space-around">
               <Link to={`/hr/createdjobs/${jobId}/applicantList`}>
                 <button
@@ -70,7 +70,9 @@ const Job = () => {
                         type="button"
                         class="inline-block px-6 py-2.5 bg-purple-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-purple-600 hover:shadow-lg focus:bg-purple-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-700 active:shadow-lg transition duration-150 ease-in-out"
                       >
-                        Round : {roundNo}
+
+                        
+                        Round : {index+1}
                       </button>
                     </Link>
                   );
@@ -95,7 +97,7 @@ const Job = () => {
               {/* </div> */}
             </div>
           </section>
-          <section class="mb-2 text-gray-800 text-center md:text-left">
+          <section class="mb-2 p-3 text-gray-800 text-center md:text-left">
             <Outlet />
           </section>
         </div>

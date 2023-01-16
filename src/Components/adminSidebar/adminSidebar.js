@@ -31,16 +31,16 @@ export const adminSidebar = [
 		url: "/admin/sendinvite",
 		// icon: <LocalHospitalIcon className={styles.listIcon} />,
 	},
-	{
-		name: "Generate analytics",
-		url: "/admin/applicants",
-		// icon: <HistoryEduIcon className={styles.listIcon} />,
-	},
-	{
-		name: "Block Students",
-		url: "/admin/blockstudents",
-		// icon: <Person2Icon className={styles.listIcon} />,
-	},
+	// {
+	// 	name: "Generate analytics",
+	// 	url: "/admin/applicants",
+	// 	// icon: <HistoryEduIcon className={styles.listIcon} />,
+	// },
+	// {
+	// 	name: "Block Students",
+	// 	url: "/admin/blockstudents",
+	// 	// icon: <Person2Icon className={styles.listIcon} />,
+	// },
 	{
 		name: "Logout",
 		url: "/logout",

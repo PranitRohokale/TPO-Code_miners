@@ -29,6 +29,11 @@ export const hrSidebar = [
 	},
 	{
 		name: "Logout",
+
+
+
+
+		
 		url: "/logout",
 		// icon: <Person2Icon className={styles.listIcon} />,
 	},

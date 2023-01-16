@@ -37,7 +37,7 @@ const ApplicantList = () => {
       // console.log("New students:", newStudents);
       setApplications(newApplications);
     }
-  };
+  };  
   const [updatedSelects, setUpdatedSelects] = useState({});
 
   const [rounds, setRounds] = useState([]);
