@@ -31,9 +31,6 @@ const Job = () => {
     <div className={styles.hospitals_wrapper}>
     <Sidebar value="Create Job" />
     <div className={styles.main_wrapper}>
-      <div>
-        <h3 >Welcome !</h3>
-      </div>
         <div class="container bg-white my-12 px-6 mx-auto">
           <section class="mb-2 p-3 text-gray-800 text-center md:text-left">
             <div class="block rounded-lg shadow-lg bg-white">

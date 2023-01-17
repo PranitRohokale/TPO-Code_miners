@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { adminSidebar } from "./adminSidebar";
 import styles from "./Sidebar.module.css";
-// import DashboardIcon from "@mui/icons-material/Dashboard";
 
 const ASidebar = ({ value }) => {
 	return (
@@ -22,7 +21,7 @@ const ASidebar = ({ value }) => {
 									className={`${item.name === value ? styles.active : ""
 										}`}
 								>
-									{/* {item.icon} */}
+									{item.icon}
 									<Link style={{ textDecoration: "none" }} to={item.url}>{item.name}</Link>
 								</div>
 							</li>

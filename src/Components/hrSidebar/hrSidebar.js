@@ -1,30 +1,29 @@
-// import DashboardIcon from "@mui/icons-material/Dashboard";
-// import Person2Icon from "@mui/icons-material/Person2";
-// import BiotechIcon from "@mui/icons-material/Biotech";
-// import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
-// import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-
+import Person2Icon from "@mui/icons-material/Person2";
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import HistoryIcon from '@mui/icons-material/History';
+import LogoutIcon from '@mui/icons-material/Logout';
 import styles from "./Sidebar.module.css";
+
 export const hrSidebar = [
 	{
 		name: "Create Job",
 		url: "/hr/createjob",
-		// icon: <LocalHospitalIcon className={styles.listIcon} />,
+		icon: <AddBoxIcon className={styles.listIcon} />,
 	},
 	
 	{
 		name: "Jobs Created",
 		url: "/hr/createdjobs",
-		// icon: <Person2Icon className={styles.listIcon} />,
+		icon: <HistoryIcon className={styles.listIcon} />,
 	},
 	{
 		name: "Profile",
 		url: "/hr/profile",
-		// icon: <Person2Icon className={styles.listIcon} />,
+		icon: <Person2Icon className={styles.listIcon} />,
 	},
 	{
 		name: "Logout",
 		url: "/logout",
-		// icon: <Person2Icon className={styles.listIcon} />,
+		icon: <LogoutIcon className={styles.listIcon} />,
 	},
 ];

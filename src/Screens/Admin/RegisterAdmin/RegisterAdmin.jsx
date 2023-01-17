@@ -23,13 +23,13 @@ const RegisterAdmin = () => {
   const navigate = useNavigate();
   useEffect(() => {
     supabase.auth.getSession().then((res) => {
-      console.log(res);
+      // console.log(res);
       const role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
       if (role) navigate(`/${role}`);
       setUserInfo(res?.data?.session?.user);
     });
 
-    console.log(userInfo);
+    // console.log(userInfo);
   }, []);
 
   const [firstName, setfirstName] = useState("");
@@ -68,7 +68,7 @@ const RegisterAdmin = () => {
         },
       },
     });
-    console.log(data,"data")
+    // console.log(data,"data")
 
     if (!error) {
       setUserInfo(data?.session);

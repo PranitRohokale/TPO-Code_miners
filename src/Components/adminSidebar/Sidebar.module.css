@@ -8,7 +8,7 @@
 	overflow: hidden;
 	/* background-color: #3c4fff; */
 	/* background-color: #219ebc; */
-	background-color: #ee8282;
+	background-color: #ea5858;
 	overflow: hidden;
 }
 
@@ -43,14 +43,15 @@
 
 .sidebarList li div:hover,
 .active {
-	background-color: #f3bcad;
+	background-color: #f8a28a;
 	cursor: pointer;
 }
 
 .sidebarList li div .listIcon {
 	margin-right: 10px;
+	color: white;
 }
 
 .sidebarList li div a {
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }

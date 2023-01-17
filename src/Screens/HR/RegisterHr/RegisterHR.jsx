@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from '@apollo/client';
 import { supabase } from "../../../Utils/supabase.config";
 import { CREATE_NEW_RECRUTERS_MUTATION } from "../../../Graphql/Mutations/recruter";
-// import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-// import PublicIcon from "@mui/icons-material/Public";
 
 const RegisterHR = () => {
   const [name, setName] = useState("");

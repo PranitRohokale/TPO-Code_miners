@@ -4,7 +4,7 @@
 	height: 100vh;
 	flex-direction: column;
 	padding: 20px 10px;
-	background-color: #f4dc7a;
+	background-color: #fbd951;
 	overflow: hidden;
 	/* background-color: #003459; */
 	/* background-color: #3c4fff; */
@@ -44,14 +44,15 @@
 
 .sidebarList li div:hover,
 .active {
-	background-color: #f0eab1;
+	background-color: #efe585;
 	cursor: pointer;
 }
 
 .sidebarList li div .listIcon {
 	margin-right: 10px;
+	color: white;
 }
 
 .sidebarList li div a {
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }

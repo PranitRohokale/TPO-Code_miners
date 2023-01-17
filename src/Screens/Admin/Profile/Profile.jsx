@@ -13,9 +13,9 @@ const ProfileScreen = () => {
 
   useEffect(() => {
     supabase.auth.getSession().then((res) => {
-      console.log(res?.data?.session?.user,"resdata");
+      // console.log(res?.data?.session?.user,"resdata");
       setJobId(res?.data?.session?.user?.id)
-      console.log(res?.data?.session?.user?.id)
+      // console.log(res?.data?.session?.user?.id)
 
       const role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
     });
@@ -27,9 +27,7 @@ const ProfileScreen = () => {
   });
 
 
-  console.log(data, "data")
-
-
+  // console.log(data, "data")
   return (
     <div className={styles.hospitals_wrapper}>
       <ASidebar value="Profile" />

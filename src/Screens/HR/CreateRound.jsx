@@ -36,7 +36,7 @@ const CreateRound = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // let status="upcomming";
-    console.log(round, isFinal, roundDetails, dateDeadline,jobId,"data");
+    // console.log(round, isFinal, roundDetails, dateDeadline,jobId,"data");
 
     createNewRound({
       variables: {

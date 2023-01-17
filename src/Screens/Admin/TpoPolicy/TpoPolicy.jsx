@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 import ASidebar from "../../../Components/adminSidebar/ASidebar";
 import styles from "./TpoPolicy.module.css"
 
-// import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-// import PublicIcon from "@mui/icons-material/Public";
-
 const TpoPolicy = () => {
 
   const navigate = useNavigate();
@@ -35,22 +32,13 @@ const TpoPolicy = () => {
       return alert("All fields required");
 
     e.preventDefault();
-    console.log(
-      academicYear,
-      circuitDream,
-      circuitNormal,
-      nonCircuitDream,
-      nonCircuitNormal
-    );
+   
   };
 
   return (
     <div className={styles.hospitals_wrapper}>
       <ASidebar value="Tpo Policy" />
       <div className={styles.main_wrapper}>
-        <div>
-          <h3 >Welcome !</h3>
-        </div>
         <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
           <div className="text-center text-2xl font-bold">TPO Policy</div>
           <div className="mt-4 sm:w-full sm:max-w-2xl m-auto">

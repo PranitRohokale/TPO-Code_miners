@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-// import PublicIcon from "@mui/icons-material/Public";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../../Utils/supabase.config";
 import Sidebar from "../../../Components/hrSidebar/Sidebar";
@@ -77,7 +75,7 @@ const CreateJob = () => {
         console.log(" HR ", res?.data?.session?.user);
       else navigate("/login");
 
-      console.log(res?.data?.session?.user?.id);
+      // console.log(res?.data?.session?.user?.id);
       setUserInfo(res?.data?.session?.user?.id);
       const role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
       console.log(role);
@@ -85,7 +83,7 @@ const CreateJob = () => {
     });
   }, [userInfo]);
 
-  console.log(userInfo, data, error, "getinfo");
+  console.log( data, "getinfo");
 
   const [checkedState, setCheckedState] = useState(
     new Array(branches.length).fill(false)
@@ -202,9 +200,9 @@ const CreateJob = () => {
     <div className={styles.hospitals_wrapper}>
       <Sidebar value="Create Job" />
       <div className={styles.main_wrapper}>
-        <div>
-          <h3 >Welcome !</h3>
-        </div>
+        {/* <div>
+          <h3 >Welcome {data?.Recruiters?.[0]?.name}!</h3>
+        </div> */}
         <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
           <div className="text-center text-2xl font-bold">Create a Job</div>
           <div className="mt-4 sm:w-full sm:max-w-2xl m-auto">
