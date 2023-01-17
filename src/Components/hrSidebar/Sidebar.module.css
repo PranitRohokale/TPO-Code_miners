@@ -1,11 +1,16 @@
 .sidebar_wrapper {
 	display: flex;
-	width:450px;
-	min-height: 100vh;
+	width: 240px;
+	height: 100vh;
 	flex-direction: column;
 	padding: 20px 10px;
 	background-color: #f4dc7a;
 	overflow: hidden;
+	/* background-color: #003459; */
+	/* background-color: #3c4fff; */
+	/* background-color: #219ebc; */
+	/* background-color: #ee8282; */
+	
 }
 
 .logoDiv {

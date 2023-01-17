@@ -11,11 +11,6 @@ export const hrSidebar = [
 		url: "/hr/createjob",
 		// icon: <LocalHospitalIcon className={styles.listIcon} />,
 	},
-	// {
-	// 	name: "Applicant list",
-	// 	url: "/hr/applicants",
-	// 	// icon: <HistoryEduIcon className={styles.listIcon} />,
-	// },
 	
 	{
 		name: "Jobs Created",
@@ -29,11 +24,6 @@ export const hrSidebar = [
 	},
 	{
 		name: "Logout",
-
-
-
-
-		
 		url: "/logout",
 		// icon: <Person2Icon className={styles.listIcon} />,
 	},

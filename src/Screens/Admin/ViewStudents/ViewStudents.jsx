@@ -20,7 +20,7 @@ import {
   Paper,
   Checkbox,
 } from "@mui/material";
-
+import styles from "../TpoPolicy/TpoPolicy.module.css"
 import { Link } from "react-router-dom";
 // import StudentsTable from "../../../Components/AdminViewStudents/StudentsTable";
 import { GET_ALL_STUDENTS } from "../../../Graphql/Queries/AdminViewStudents/adminViewStudents";
@@ -146,126 +146,126 @@ const ViewStudents = () => {
 
 
   return (
-    <div style={{display: "flex"}}>
-      <ASidebar/>
-    <Container maxWidth="lg" sx={{ my: 5 }}>
-            <Typography
-            sx={{
-                fontSize: 40,
-                textAlign: "center",
-                fontWeight: 500,
-                color: "#8c47ed"
-            }}
-            gutterBottom
+    <div className={styles.hospitals_wrapper}>
+      <ASidebar value="Student list" />
+      <Container maxWidth="lg" sx={{ my: 5 }}>
+        <Typography
+          sx={{
+            fontSize: 40,
+            textAlign: "center",
+            fontWeight: 500,
+            color: "#8c47ed"
+          }}
+          gutterBottom
+        >
+          Student List
+        </Typography>
+        {students ? (
+          <TableContainer component={Paper}>
+            <Table
+              sx={{ minWidth: 350, maxWidth: 350 }}
+              aria-label="simple table"
             >
-            Student List
-            </Typography>
-      {students ? (
-        <TableContainer component={Paper}>
-          <Table
-            sx={{ minWidth: 350, maxWidth: 350 }}
-            aria-label="simple table"
-          >
-            <TableHead>
-              <TableRow>
-                <TableCell style={{fontWeight: 600}}>Student Name</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>Is CR</TableCell>
-                <TableCell style={{fontWeight: 600}}>Is Placed</TableCell>
-                <TableCell style={{fontWeight: 600}}>Programme</TableCell>
-                <TableCell style={{fontWeight: 600}}>Branch</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>ID</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>Grad Year</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>Gender</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>Age</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>CPI</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>10th</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>12th</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>Mobile</TableCell>
-                <TableCell align="right" style={{fontWeight: 600}}>Resume Link</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {students.map((row, index) => (
-                <TableRow
-                  key={index}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.firstName + " " + row.lastName}
-                  </TableCell>
-                  <TableCell align="right">
-                    <Checkbox
-                      checked={row.isCr}
-                      onChange={(e) => {
-                        var newStudentAttr = { "isCr": !row.isCr }; //...students[index],
-                        updateStudent(row.id, newStudentAttr);
-                        var updatedCrs_ = updatedCrs;
-                        updatedCrs_[row.id] = students[index].isCr;
-                        setUpdatedCrs(updatedCrs_);
-                        console.log(updatedCrs);
-                      }}
-                      color="success"
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {row.isNormalPlaced
-                      ? row.isDreamPlaced
-                        ? row.isSuperPlaced
-                          ? "Yes, Super dream"
-                          : "Yes, Dream"
-                        : "Yes, Normal"
-                      : "No"}
-                  </TableCell>
-                  <TableCell>{row.programme ? row.programme : "N/A"}</TableCell>
-                  <TableCell>{row.branch ? row.branch : "N/A"}</TableCell>
-                  <TableCell align="right">
-                    {row.clgId ? row.clgId : "N/A"}
-                  </TableCell>
-                  <TableCell align="right">
-                    {row.gradYear ? row.gradYear : "N/A"}
-                  </TableCell>
-                  <TableCell>{row.gender ? row.gender : "N/A"}</TableCell>
-                  <TableCell align="right">
-                    {row.age ? row.age : "N/A"}
-                  </TableCell>
-                  <TableCell align="right">
-                    {row.CPI ? row.CPI : "N/A"}
-                  </TableCell>
-                  <TableCell align="right">
-                    {row.column_10th ? row.column_10th : "N/A"}
-                  </TableCell>
-                  <TableCell align="right">
-                    {row.column_12th ? row.column_12th : "N/A"}
-                  </TableCell>
-                  <TableCell align="right">
-                    {row.mobileNumber ? row.mobileNumber : "N/A"}
-                  </TableCell>
-                  <TableCell align="right">
-                      
-                    {row.resumeLink ? 
-                      <div styles={{color: "#4287f5"}}>
-                          <a href={row.resumeLink} > Link</a>
-                      </div>
-                     : "N/A"}
-                  </TableCell>
+              <TableHead>
+                <TableRow>
+                  <TableCell style={{ fontWeight: 600 }}>Student Name</TableCell>
+                  <TableCell align="right" style={{ fontWeight: 600 }}>Is CR</TableCell>
+                  <TableCell style={{ fontWeight: 600 }}>Is Placed</TableCell>
+                  <TableCell style={{ fontWeight: 600 }}>Programme</TableCell>
+                  <TableCell style={{ fontWeight: 600 }}>Branch</TableCell>
+                  <TableCell align="right" style={{ fontWeight: 600 }}>ID</TableCell>
+                  <TableCell align="right" style={{ fontWeight: 600 }}>Grad Year</TableCell>
+                  <TableCell align="right" style={{ fontWeight: 600 }}>Gender</TableCell>
+                  <TableCell align="right" style={{ fontWeight: 600 }}>Age</TableCell>
+                  <TableCell align="right" style={{ fontWeight: 600 }}>CPI</TableCell>
+                  <TableCell align="right" style={{ fontWeight: 600 }}>10th</TableCell>
+                  <TableCell align="right" style={{ fontWeight: 600 }}>12th</TableCell>
+                  <TableCell align="right" style={{ fontWeight: 600 }}>Mobile</TableCell>
+                  <TableCell align="right" style={{ fontWeight: 600 }}>Resume Link</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      ) : (
-        "Loading..."
-      )}
-      <hr/>
-      <Button 
-        onClick={()=>{}}
-        variant='contained'
-        color="success"
-        sx={{marginTop:3, marginLeft:120}}
-      >
-        Save Changes
-      </Button>
-    </Container>
+              </TableHead>
+              <TableBody>
+                {students.map((row, index) => (
+                  <TableRow
+                    key={index}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {row.firstName + " " + row.lastName}
+                    </TableCell>
+                    <TableCell align="right">
+                      <Checkbox
+                        checked={row.isCr}
+                        onChange={(e) => {
+                          var newStudentAttr = { "isCr": !row.isCr }; //...students[index],
+                          updateStudent(row.id, newStudentAttr);
+                          var updatedCrs_ = updatedCrs;
+                          updatedCrs_[row.id] = students[index].isCr;
+                          setUpdatedCrs(updatedCrs_);
+                          console.log(updatedCrs);
+                        }}
+                        color="success"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      {row.isNormalPlaced
+                        ? row.isDreamPlaced
+                          ? row.isSuperPlaced
+                            ? "Yes, Super dream"
+                            : "Yes, Dream"
+                          : "Yes, Normal"
+                        : "No"}
+                    </TableCell>
+                    <TableCell>{row.programme ? row.programme : "N/A"}</TableCell>
+                    <TableCell>{row.branch ? row.branch : "N/A"}</TableCell>
+                    <TableCell align="right">
+                      {row.clgId ? row.clgId : "N/A"}
+                    </TableCell>
+                    <TableCell align="right">
+                      {row.gradYear ? row.gradYear : "N/A"}
+                    </TableCell>
+                    <TableCell>{row.gender ? row.gender : "N/A"}</TableCell>
+                    <TableCell align="right">
+                      {row.age ? row.age : "N/A"}
+                    </TableCell>
+                    <TableCell align="right">
+                      {row.CPI ? row.CPI : "N/A"}
+                    </TableCell>
+                    <TableCell align="right">
+                      {row.column_10th ? row.column_10th : "N/A"}
+                    </TableCell>
+                    <TableCell align="right">
+                      {row.column_12th ? row.column_12th : "N/A"}
+                    </TableCell>
+                    <TableCell align="right">
+                      {row.mobileNumber ? row.mobileNumber : "N/A"}
+                    </TableCell>
+                    <TableCell align="right">
+
+                      {row.resumeLink ?
+                        <div styles={{ color: "#4287f5" }}>
+                          <a href={row.resumeLink} > Link</a>
+                        </div>
+                        : "N/A"}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        ) : (
+          "Loading..."
+        )}
+        <hr />
+        <Button
+          onClick={() => { }}
+          variant='contained'
+          color="success"
+          sx={{ marginTop: 3, marginLeft: 120 }}
+        >
+          Save Changes
+        </Button>
+      </Container>
     </div>
   );
 };

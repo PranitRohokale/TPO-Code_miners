@@ -71,7 +71,7 @@ const AdminDashboard = () => {
     return (
         // <div>
         <div style={{display:"flex"}}>
-        <ASidebar/>
+        <ASidebar value="Dashboard"/>
 
    <Container maxWidth='lg' sx={{ my: 5 }}>
             <Typography

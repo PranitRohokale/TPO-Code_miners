@@ -8,6 +8,8 @@ import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_NEW_JOB_MUTATION } from "../../../Graphql/Mutations/recruter";
 import { GET_RECRUTER_INFO } from "../../../Graphql/Queries/recruter";
 import moment from "moment";
+import styles from "./CreateJob.module.css"
+
 
 const branches = [
   {
@@ -39,19 +41,19 @@ const branches = [
   },
 ];
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "60%",
-    right: "auto",
-    bottom: "auto",
-    width: "45%",
-    display: "flex",
-    flexDirection: "column",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
+// const customStyles = {
+//   content: {
+//     top: "50%",
+//     left: "60%",
+//     right: "auto",
+//     bottom: "auto",
+//     width: "45%",
+//     display: "flex",
+//     flexDirection: "column",
+//     marginRight: "-50%",
+//     transform: "translate(-50%, -50%)",
+//   },
+// };
 
 const CreateJob = () => {
   const [title, setTitle] = useState("");
@@ -212,12 +214,12 @@ const CreateJob = () => {
   };
 
   return (
-    <div style={{ display: "flex" }}>
-      <Sidebar />
-      <div
-        style={{ width: "100%" }}
-        // style={customStyles}
-      >
+    <div className={styles.hospitals_wrapper}>
+      <Sidebar value="Create Job" />
+      <div className={styles.main_wrapper}>
+        <div>
+          <h3 >Welcome !</h3>
+        </div>
         <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
           <div className="text-center text-2xl font-bold">Create a Job</div>
           <div className="mt-4 sm:w-full sm:max-w-2xl m-auto">

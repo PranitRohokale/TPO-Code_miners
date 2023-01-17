@@ -7,6 +7,11 @@
 import styles from "./Sidebar.module.css";
 export const adminSidebar = [
 	{
+		name: "Dashboard",
+		url: "/admin",
+		// icon: <BiotechIcon className={styles.listIcon} />,
+	},
+	{
 		name: "Tpo Policy",
 		url: "/admin/tpopolicy",
 		// icon: <BiotechIcon className={styles.listIcon} />,

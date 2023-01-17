@@ -5,25 +5,26 @@ import { supabase } from "../../../Utils/supabase.config";
 import { useEffect, useState } from "react";
 import { useQuery } from '@apollo/client';
 import { GET_JOB_CREATED_BY_RECRUTER_QUERY, GET_RECRUITER_INFO } from '../../../Graphql/Queries/recruiter';
+import styles from "../CreateJob/CreateJob.module.css"
 
-const jobs = [
-    {
-        id: 1,
-        title: "SDE Intern",
-        desc: "lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum",
-    },
-    {
-        id: 2,
-        title: "sde",
-        desc: "lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum",
-    },
-    {
-        id: 3,
-        title: "sde",
-        desc: "lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum",
-    },
+// const jobs = [
+//     {
+//         id: 1,
+//         title: "SDE Intern",
+//         desc: "lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum",
+//     },
+//     {
+//         id: 2,
+//         title: "sde",
+//         desc: "lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum",
+//     },
+//     {
+//         id: 3,
+//         title: "sde",
+//         desc: "lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum",
+//     },
 
-]
+// ]
 
 const PastJobs = () => {
     const navigate = useNavigate();
@@ -50,16 +51,16 @@ const PastJobs = () => {
     }, [jobId]);
 
     return (
-        <div>
-            <div style={{ display: "flex" }}>
-                <Sidebar />
-                <div>
-                    <div style={{fontSize: "22px",textAlign: "center",padding: "10px",fontWeight: "500"}}>
-                    <p>Past Created Job</p>
+        // <div>
+            <div className={styles.hospitals_wrapper}>
+                <Sidebar value="Jobs Created" />
+                <div className={styles.main_wrapper}>
+                    <div>
+                        <h3 >Welcome !</h3>
                     </div>
                     <div style={{ display: "flex", flexWrap: "wrap" }}>
                         {
-                            data?.Job_Details.length==0 ? <p>No Previous jobs exits...</p> : ""
+                            data?.Job_Details.length == 0 ? <p>No Previous jobs exits...</p> : ""
                         }
 
                         {data?.Job_Details.map((job, index) => (
@@ -74,7 +75,7 @@ const PastJobs = () => {
                                         <p style={{ fontSize: "15px", color: "white", marginTop: "10px" }}>Salary :{job.salary}</p>
                                     </div>
 
-                                    <button style={{ backgroundColor: "#d1b113", width: "180px", padding: "10px", margin: "20px", borderRadius: "20px",margin:" 30px 30px " }}
+                                    <button style={{ backgroundColor: "#d1b113", width: "180px", padding: "10px", margin: "20px", borderRadius: "20px", margin: " 30px 30px " }}
 
                                         rel={"noopener noreferrer"}
                                         onClick={(e) => {
@@ -92,7 +93,7 @@ const PastJobs = () => {
                 </div>
 
             </div>
-        </div>
+        // </div>
     )
 
 }

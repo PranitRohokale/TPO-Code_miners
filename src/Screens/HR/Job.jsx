@@ -7,6 +7,8 @@ import {
   GET_ROUNDS_INFO_BY_APPLICATIONID_QUERY,
 } from "../../Graphql/Queries/recruiter";
 import { useQuery } from "@apollo/client";
+import styles from "./CreateJob/CreateJob.module.css"
+
 
 const Job = () => {
   const { jobId } = useParams();
@@ -26,9 +28,12 @@ const Job = () => {
   console.log(rounds, "ddddddd");
 
   return (
-    <div style={{ display: "flex" }}>
-      <Sidebar />
-      <div style={{ width: "100%" }}>
+    <div className={styles.hospitals_wrapper}>
+    <Sidebar value="Create Job" />
+    <div className={styles.main_wrapper}>
+      <div>
+        <h3 >Welcome !</h3>
+      </div>
         <div class="container bg-white my-12 px-6 mx-auto">
           <section class="mb-2 p-3 text-gray-800 text-center md:text-left">
             <div class="block rounded-lg shadow-lg bg-white">

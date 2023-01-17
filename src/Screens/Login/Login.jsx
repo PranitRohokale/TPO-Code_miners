@@ -69,7 +69,7 @@ const Login = () => {
     <div
       // isOpen={true}
       // onRequestClose={closeModal}
-      style={customStyles}
+      // style={customStyles}
       // contentLabel="Register"
     >
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
