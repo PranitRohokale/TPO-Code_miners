@@ -134,6 +134,12 @@ const ApplicantList = () => {
                       scope="col"
                       className="text-sm font-medium text-gray-900 p-4 text-left"
                     >
+                      Email
+                    </th>
+                    <th
+                      scope="col"
+                      className="text-sm font-medium text-gray-900 p-4 text-left"
+                    >
                       Resume Link
                     </th>
                     <th
@@ -177,11 +183,11 @@ const ApplicantList = () => {
                             <td className="text-sm text-gray-900 font-light p-4 whitespace-nowrap">
                               <div class="form-check">
                                 <input
-                                  class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                  class="form-check-input  h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                   type="checkbox"
-                                  checked={
-                                    shortlistedStudents.includes[applicationId]
-                                  }
+                                  checked={shortlistedStudents.includes(
+                                    applicationId
+                                  )}
                                   onChange={() => checkHandler(applicationId)}
                                   id="flexCheckDefault"
                                 />
@@ -201,6 +207,16 @@ const ApplicantList = () => {
                             </td>
                             <td className="text-sm text-gray-900 font-light p-4 whitespace-nowrap">
                               <a
+                                href={
+                                  clgEmail?.length ? `mailto:${clgEmail}` : "#"
+                                }
+                                class="text-blue-600 visited:text-purple-600 ..."
+                              >
+                                send mail
+                              </a>
+                            </td>
+                            <td className="text-sm text-gray-900 font-light p-4 whitespace-nowrap">
+                              <a
                                 href={resumeLink?.length ? resumeLink : "#"}
                                 class="text-blue-600 visited:text-purple-600 ..."
                                 target={"_blank"}
@@ -214,26 +230,30 @@ const ApplicantList = () => {
                           </tr>
                         );
                       })}
-                      <div class="space-x-2 m-3 inset-x-px">
-                        <div>
-                          <button
-                            type="button"
-                            disabled={shortlistedStudents?.length === 0}
-                            className={`${
-                              shortlistedStudents?.length === 0
-                                ? "inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out cursor-not-allowed"
-                                : "inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out"
-                            }`}
-                            onClick={handleShortlist}
-                          >
-                            ShortList Students
-                          </button>
-                        </div>
-                      </div>
                     </>
                   )}
                 </tbody>
               </table>
+              {shortlistedStudents?.length ? (
+                <div class="space-x-2 m-3 inset-x-px">
+                  <div>
+                    <button
+                      type="button"
+                      disabled={shortlistedStudents?.length === 0}
+                      className={`${
+                        shortlistedStudents?.length === 0
+                          ? "inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out cursor-not-allowed"
+                          : "inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out"
+                      }`}
+                      onClick={handleShortlist}
+                    >
+                      ShortList Students
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>

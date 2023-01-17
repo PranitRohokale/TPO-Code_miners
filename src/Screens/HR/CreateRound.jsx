@@ -3,7 +3,8 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../Utils/supabase.config";
 import { CREATE_NEW_ROUND } from "../../Graphql/Mutations/recruter";
-import { useMutation } from "@apollo/client";
+import { useMutation,useQuery } from "@apollo/client";
+import { GET_RECRUITER_INFO } from "../../Graphql/Queries/recruiter";
 
 const CreateRound = () => {
   const { jobId } = useParams();
@@ -13,25 +14,31 @@ const CreateRound = () => {
   const [isFinal, setIsFinal] = useState(false);
   const [roundDetails, setRoundDetails] = useState("");
   const [dateDeadline, setDateDeadline] = useState("");
+  const [recruterId, setRecruterId] = useState();
 
-  const [createNewRound, { jobData, jobloading, jobError }] = useMutation(
-    CREATE_NEW_ROUND
-  );
+  const [createNewRound, { jobData, jobloading, jobError }] =
+    useMutation(CREATE_NEW_ROUND);
+
+  const {
+    loading,
+    error,
+    data: recruiterInfo,
+  } = useQuery(GET_RECRUITER_INFO, {
+    variables: { _eq: recruterId },
+  });
 
   useEffect(() => {
     const role = "";
     supabase.auth.getSession().then((res) => {
       if (res?.data?.session?.user) {
         // console.log(" HR ", res?.data?.session?.user.id);
-        // setJobId(res?.data?.session?.user?.id)
-      }
-      else navigate("/login");
+        setRecruterId(res?.data?.session?.user?.id);
+      } else navigate("/login");
       let role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
       console.log(role);
       if (role && role != "hr") navigate(`/${role}`);
     });
   }, []);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,39 +47,33 @@ const CreateRound = () => {
 
     createNewRound({
       variables: {
-        "object": {
-          "roundNo": round,
-          "isFinal": isFinal,
-          "roundTime": dateDeadline,
-          "roundDetail":roundDetails,
-          "jobId": jobId,
-          "status": "upcomming",
-          "companyName": "GroundUp",
-          "shortlistStudentList": {
-            "list" : []
-          }
-        }
-      }
-    })
-    alert("round created")
-    navigate(`/hr/createdjobs/${jobId}/createRound`)
+        object: {
+          roundNo: round,
+          isFinal: isFinal,
+          roundTime: dateDeadline,
+          roundDetail: roundDetails,
+          jobId: jobId,
+          status: "upcomming",
+          companyName: recruiterInfo?.companyName ?? "GroundUp.",
+          shortlistStudentList: {
+            list: [],
+          },
+        },
+      },
+    });
+    alert("round created");
+    navigate(`/hr/createdjobs/${jobId}/`);
     // if (!(name && companyName && emailId && mobileNo && password))
     //   return alert("All fields required");
-
   };
 
   return (
-    <div
-    >
+    <div>
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
-        <div className="text-center text-2xl font-bold">
-          Create Round
-        </div>
+        <div className="text-center text-2xl font-bold">Create Round</div>
         <div className="mt-4 sm:w-full sm:max-w-2xl m-auto">
           <div className="bg-white py-4 px-4 sm:rounded-lg sm:px-10">
-            <form className="space-y-6 w-full"
-            onSubmit={handleSubmit}
-            >
+            <form className="space-y-6 w-full" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="password"
@@ -92,26 +93,26 @@ const CreateRound = () => {
                 </div>
               </div>
 
-              <div >
-                  <label
-                    htmlFor="password"
-                    className="block text-sm font-medium text-gray-700"
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Is Final
+                </label>
+                <div className="mt-1">
+                  <select
+                    value={isFinal}
+                    onChange={(e) => {
+                      setIsFinal(e.target.value);
+                    }}
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   >
-                    Is Final
-                  </label>
-                  <div className="mt-1">
-                    <select
-                      value={isFinal}
-                      onChange={(e) => {
-                        setIsFinal(e.target.value);
-                      }}
-                      className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option value={true}>True</option>
-                      <option value={false}>False</option>
-                    </select>
-                  </div>
+                    <option value={true}>True</option>
+                    <option value={false}>False</option>
+                  </select>
                 </div>
+              </div>
 
               <div className="w-full">
                 <label
@@ -133,26 +134,26 @@ const CreateRound = () => {
               </div>
 
               <div>
-                    <label
-                      htmlFor="password"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Round Time
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        id="dob"
-                        type="datetime-local"
-                        placeholder="DOB"
-                        value={dateDeadline}
-                        onChange={(e) => {
-                          setDateDeadline(e.target.value);
-                          // console.log(e.target.value);
-                        }}
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Round Time
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="dob"
+                    type="datetime-local"
+                    placeholder="DOB"
+                    value={dateDeadline}
+                    onChange={(e) => {
+                      setDateDeadline(e.target.value);
+                      // console.log(e.target.value);
+                    }}
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+              </div>
               <div>
                 <button
                   type="submit"

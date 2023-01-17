@@ -98,31 +98,41 @@ const GET_ROUNDS_INFO_BY_APPLICATIONID_QUERY = gql`
       roundNo
       roundTime
       status
-    }
-    Rounds_aggregate(where: {jobId: {_eq: $applicationId}}) {
-      aggregate {
-        totalRounds: count
-      }
+      shortlistStudentList
     }
   }
 `;
 
 
-// const GET_ALL_DETAILS_OF_ONE_ROUND_QUERY = gql`
-// query getAllDetailsOfOneRound($roundId: bigint = "") {
-//   Rounds_by_pk(id: $roundId) {
-//     id
-//     jobId
-//     companyName
-//     isFinal
-//     roundDetail
-//     roundNo
-//     roundTime
-//     status
-//     shortlistStudentList
-//   }
-// }
-// `;
+const GET_STUDENTS_DETAILS_FRO_EACH_ROUND_QUERY = gql`
+  query getStudentsDetailsFroEachRound($jobId: bigint = "", $applicationIds: [bigint!] = []) {
+    Applications(where: {jobId: {_eq: $jobId}, id: {_in: $applicationIds}}) {
+      id
+      resumeLink
+      isSelected
+      Student {
+        CPI
+        branch
+        clgEmail
+        clgId
+        firstName
+        gradYear
+        gender
+        id
+        isCr
+        isDreamPlaced
+        isNormalPlaced
+        isSuperPlaced
+        lastName
+        middleName
+        mobileNumber
+        programme
+        resumeLink
+        personalEmail
+      }
+    }
+  }
+`;
 
 export {
     GET_RECRUITER_INFO,
@@ -130,5 +140,6 @@ export {
     GET_ALL_DETAILS_OF_ONE_ROUND_QUERY,
     GET_APPLICANT_LIST_BY_JOB_ID_QUERY,
     GET_JOB_INFO_BY_JOBID_QUERY,
-    GET_ROUNDS_INFO_BY_APPLICATIONID_QUERY
+    GET_ROUNDS_INFO_BY_APPLICATIONID_QUERY,
+    GET_STUDENTS_DETAILS_FRO_EACH_ROUND_QUERY
 }

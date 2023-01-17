@@ -1,58 +1,58 @@
 .sidebar_wrapper {
-	display: flex;
-	width: 240px;
-	height: 100vh;
-	flex-direction: column;
-	padding: 20px 10px;
-	background-color: #fbd951;
-	overflow: hidden;
-	/* background-color: #003459; */
-	/* background-color: #3c4fff; */
-	/* background-color: #219ebc; */
-	/* background-color: #ee8282; */
-	
+  display: flex;
+  width: 240px;
+  height: 100vh;
+  flex-direction: column;
+  padding: 20px 10px;
+  background-color: #fbd951;
+  overflow: hidden;
+  /* background-color: #003459; */
+  /* background-color: #3c4fff; */
+  /* background-color: #219ebc; */
+  /* background-color: #ee8282; */
 }
 
 .logoDiv {
-	height: 50px;
-	padding: 0 20px;
-	padding-left: 25px;
-	font-size: 25px;
-	font-weight: 600;
-	color: rgb(0, 0, 0);
+  height: 50px;
+  padding: 0 20px;
+  padding-left: 25px;
+  font-size: 25px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
 }
 
 .sidebarList {
-	padding: 0 8px;
-	list-style-type: none;
+  padding: 0 8px;
+  list-style-type: none;
 }
 
 .sidebarList li {
-	text-decoration: none;
-	margin: 10px 0;
+  text-decoration: none;
+  margin: 10px 0;
 }
 
 .sidebarList li div {
-	text-decoration: none;
-	font-size: 17px;
-	display: flex;
-	flex-direction: row;
-	border-radius: 5px;
-	color: rgb(0, 0, 0);
-	padding: 10px 20px;
+  text-decoration: none;
+  font-size: 17px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
 }
 
 .sidebarList li div:hover,
 .active {
-	background-color: #efe585;
-	cursor: pointer;
+  background-color: #efe585;
+  cursor: pointer;
 }
 
 .sidebarList li div .listIcon {
-	margin-right: 10px;
-	color: white;
+  margin-right: 10px;
+  /* color: white; */
+  color: #000;
 }
 
 .sidebarList li div a {
-	color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }

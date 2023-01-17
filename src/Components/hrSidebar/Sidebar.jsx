@@ -22,7 +22,7 @@ const Sidebar = ({ value }) => {
 										}`}
 								>
 									{item.icon}
-									<Link style={{ textDecoration: "none" }} to={item.url}>{item.name}</Link>
+									<Link style={{ textDecoration: "none" , color : "#000"}} to={item.url}>{item.name}</Link>
 								</div>
 							</li>
 						);
