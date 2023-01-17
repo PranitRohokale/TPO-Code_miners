@@ -2,20 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../Utils/supabase.config";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "60%",
-    right: "auto",
-    bottom: "auto",
-    width: "45%",
-    display: "flex",
-    flexDirection: "column",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-
 const Login = () => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState("");
@@ -66,12 +52,7 @@ const Login = () => {
   };
 
   return (
-    <div
-      // isOpen={true}
-      // onRequestClose={closeModal}
-      // style={customStyles}
-      // contentLabel="Register"
-    >
+    <div>
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
         <div className="text-center text-2xl font-bold">Login</div>
         <div className="mt-4 sm:w-full sm:max-w-2xl m-auto">

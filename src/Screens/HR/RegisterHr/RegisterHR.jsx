@@ -6,20 +6,6 @@ import { CREATE_NEW_RECRUTERS_MUTATION } from "../../../Graphql/Mutations/recrut
 // import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 // import PublicIcon from "@mui/icons-material/Public";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "60%",
-    right: "auto",
-    bottom: "auto",
-    width: "45%",
-    display: "flex",
-    flexDirection: "column",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-
 const RegisterHR = () => {
   const [name, setName] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -83,7 +69,6 @@ const RegisterHR = () => {
 
   return (
     <div
-      // style={customStyles}
     >
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
         <div className="text-center text-2xl font-bold">

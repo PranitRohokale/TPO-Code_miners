@@ -41,26 +41,12 @@ const branches = [
   },
 ];
 
-// const customStyles = {
-//   content: {
-//     top: "50%",
-//     left: "60%",
-//     right: "auto",
-//     bottom: "auto",
-//     width: "45%",
-//     display: "flex",
-//     flexDirection: "column",
-//     marginRight: "-50%",
-//     transform: "translate(-50%, -50%)",
-//   },
-// };
 
 const CreateJob = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [salary, setSalary] = useState(0);
   const [noOfRounds, setNoOfRounds] = useState(0);
-  // const [endDate, setEndDate] = useState("");
   const [location, setLocation] = useState("");
   const [ssc, setSsc] = useState(0);
   const [hsc, setHsc] = useState(0);
@@ -200,7 +186,6 @@ const CreateJob = () => {
       },
     };
 
-    // console.log("DATA ", userData);
     console.log("varvariables ", variables);
 
     createNewJob({ variables });
@@ -432,9 +417,7 @@ const CreateJob = () => {
                   </div>
                 </div>
 
-                <div
-                // style={{ display: "flex", justifyContent: "space-between" }}
-                >
+                <div>
                   <div>
                     <label
                       htmlFor="password"
@@ -450,7 +433,6 @@ const CreateJob = () => {
                         value={dateDeadline}
                         onChange={(e) => {
                           setDateDeadline(e.target.value);
-                          // console.log(e.target.value);
                         }}
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />

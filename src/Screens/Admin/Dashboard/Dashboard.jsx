@@ -69,7 +69,6 @@ var dashboardData= {
 const AdminDashboard = () => {
 
     return (
-        // <div>
         <div style={{display:"flex"}}>
         <ASidebar value="Dashboard"/>
 
@@ -107,9 +106,6 @@ const AdminDashboard = () => {
             <DashboardTable rows={dashboardData.top10Companies}/>
         </Container>
         </div>
-     
-        // <div/>
-
     );
 };
 

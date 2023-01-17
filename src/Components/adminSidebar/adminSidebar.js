@@ -21,11 +21,11 @@ export const adminSidebar = [
 		url: "/admin/studentlist",
 		// icon: <Person2Icon className={styles.listIcon} />,
 	},
-	{
-		name: "Profile",
-		url: "/admin/profile",
-		// icon: <Person2Icon className={styles.listIcon} />,
-	},
+	// {
+	// 	name: "Profile",
+	// 	url: "/admin/profile",
+	// 	// icon: <Person2Icon className={styles.listIcon} />,
+	// },
 	{
 		name: "Schedule",
 		url: "/admin/schedule",
@@ -51,6 +51,6 @@ export const adminSidebar = [
 		url: "/logout",
 		// icon: <Person2Icon className={styles.listIcon} />,
 	},
-	
-	
+
+
 ];

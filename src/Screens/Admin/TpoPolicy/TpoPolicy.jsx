@@ -7,20 +7,6 @@ import styles from "./TpoPolicy.module.css"
 // import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 // import PublicIcon from "@mui/icons-material/Public";
 
-// const customStyles = {
-//   content: {
-//     top: "50%",
-//     left: "60%",
-//     right: "auto",
-//     bottom: "auto",
-//     width: "45%",
-//     display: "flex",
-//     flexDirection: "column",
-//     marginRight: "-50%",
-//     transform: "translate(-50%, -50%)",
-//   },
-// };
-
 const TpoPolicy = () => {
 
   const navigate = useNavigate();
@@ -59,13 +45,9 @@ const TpoPolicy = () => {
   };
 
   return (
-    <div className={styles.hospitals_wrapper}
-    // style={{ display: "flex",width: "100%",flexDirection:"row"}}
-    >
+    <div className={styles.hospitals_wrapper}>
       <ASidebar value="Tpo Policy" />
-      <div className={styles.main_wrapper}
-      // style={{display: "flex",flexDirection:"column", }}
-      >
+      <div className={styles.main_wrapper}>
         <div>
           <h3 >Welcome !</h3>
         </div>

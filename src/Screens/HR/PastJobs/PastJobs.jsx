@@ -7,24 +7,6 @@ import { useQuery } from '@apollo/client';
 import { GET_JOB_CREATED_BY_RECRUTER_QUERY, GET_RECRUITER_INFO } from '../../../Graphql/Queries/recruiter';
 import styles from "../CreateJob/CreateJob.module.css"
 
-// const jobs = [
-//     {
-//         id: 1,
-//         title: "SDE Intern",
-//         desc: "lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum",
-//     },
-//     {
-//         id: 2,
-//         title: "sde",
-//         desc: "lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum",
-//     },
-//     {
-//         id: 3,
-//         title: "sde",
-//         desc: "lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum lorem epsum",
-//     },
-
-// ]
 
 const PastJobs = () => {
     const navigate = useNavigate();
@@ -51,7 +33,6 @@ const PastJobs = () => {
     }, [jobId]);
 
     return (
-        // <div>
             <div className={styles.hospitals_wrapper}>
                 <Sidebar value="Jobs Created" />
                 <div className={styles.main_wrapper}>
@@ -93,7 +74,6 @@ const PastJobs = () => {
                 </div>
 
             </div>
-        // </div>
     )
 
 }

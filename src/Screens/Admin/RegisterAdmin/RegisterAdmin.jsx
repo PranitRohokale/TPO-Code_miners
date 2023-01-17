@@ -94,7 +94,6 @@ const RegisterAdmin = () => {
 
   return (
     <div
-      // style={customStyles}
     >
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
         <div className="text-center text-2xl font-bold">

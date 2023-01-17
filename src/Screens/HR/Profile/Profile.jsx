@@ -14,7 +14,6 @@ const HRProfileScreen = () => {
     const role = "";
     supabase.auth.getSession().then((res) => {
       if (res?.data?.session?.user) {
-        // console.log(" HR ", res?.data?.session?.user.id);
         setJobId(res?.data?.session?.user?.id)
       }
       else navigate("/login");
