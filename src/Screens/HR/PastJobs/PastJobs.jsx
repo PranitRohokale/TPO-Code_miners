@@ -13,17 +13,18 @@ const JobCard = ({companyName,description,salary,id,title}) => {
     let desc=description.split(/\s+/).slice(0, 10).join(" ");
     return (
         <div key={id} className="flex justify-center m-5 basis-[30%]">
-            <div className="block rounded-lg shadow-lg bg-white max-w-sm text-center bg-yellow-200">
-                <div className="p-6">
-                    <h5 className="text-gray-900 text-xl font-medium mb-2">{companyName} : {title}</h5>
-                    <p className="text-gray-700 text-base mb-4">
-                    Description: {desc}
+            <div style={{backgroundColor: "#0087ca"}} className="block rounded-lg shadow-lg bg-white max-w-sm text-center">
+                <div className="p-6 text-white">
+                    <h5 className="text-xl font-medium mb-2">{companyName} : {title}</h5>
+                    <p className="text-base font-medium mb-4">
+                    Description: <span className='text-slate-200 font-normal text-base'>{desc}</span>
                     </p>
 
-                    <p className="text-gray-700 text-base mb-4">
-                    Salary :  {salary}
+                    <p className="text-base font-medium mb-4">
+                    Salary :  <span className='text-slate-200 font-normal text-base'>{salary}</span>
                     </p>
-                    <button type="button" className="bg-yellow-500 inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-yellow-400 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                    <button type="button" className="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out"
+                    style={{backgroundColor: "#22a6c7"}} 
                      onClick={(e) => {
                         e.preventDefault();
                         navigate(
@@ -70,6 +71,7 @@ const PastJobs = () => {
         <div className={styles.hospitals_wrapper}>
             <Sidebar value="Jobs Created" />
             <div className={styles.main_wrapper}>
+            <div className="text-center text-2xl font-bold mt-4 mb-2">Previous Jobs</div>
                 <div style={{ display: "flex", flexWrap: "wrap",flexBasis:"1/3" }}>
                     {
                         data?.Job_Details.length == 0 ? <p>No Previous jobs exits...</p> : ""

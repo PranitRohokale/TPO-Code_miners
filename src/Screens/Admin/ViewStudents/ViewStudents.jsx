@@ -149,7 +149,8 @@ const ViewStudents = () => {
     <div className={styles.hospitals_wrapper}>
       <ASidebar value="Student list" />
       <Container maxWidth="lg" sx={{ my: 5 }}>
-        <Typography
+      <div className="text-center text-2xl font-bold mb-6">Student List</div>
+        {/* <Typography
           sx={{
             fontSize: 40,
             textAlign: "center",
@@ -159,11 +160,11 @@ const ViewStudents = () => {
           gutterBottom
         >
           Student List
-        </Typography>
+        </Typography> */}
         {students ? (
           <TableContainer component={Paper}>
             <Table
-              sx={{ minWidth: 350, maxWidth: 350 }}
+              sx={{ minWidth: 350, maxWidth: 350}}
               aria-label="simple table"
             >
               <TableHead>

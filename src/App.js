@@ -70,5 +70,3 @@ function App() {
 }
 
 export default App;
-
-// pranitrohokale@gmail.com

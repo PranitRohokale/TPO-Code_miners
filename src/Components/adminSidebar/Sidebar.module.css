@@ -8,7 +8,9 @@
 	overflow: hidden;
 	/* background-color: #3c4fff; */
 	/* background-color: #219ebc; */
-	background-color: #ea5858;
+	/* background-color: #ea5858; */
+	background-color:#EB455F;
+	/* background-color:#FD8A8A; */
 	overflow: hidden;
 }
 
@@ -44,6 +46,9 @@
 .sidebarList li div:hover,
 .active {
 	background-color: #f8a28a;
+	/* background-color: #ea5858; */
+	/* background-color:#EB455F; */
+	background-color:#FD8A8A;
 	cursor: pointer;
 }
 

@@ -72,8 +72,8 @@ const RegisterHR = () => {
         <div className="text-center text-2xl font-bold">
           Register as a recruiter
         </div>
-        <div className="mt-4 sm:w-full sm:max-w-2xl m-auto">
-          <div className="bg-white py-4 px-4 sm:rounded-lg sm:px-10">
+        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md shadow-lg">
+						<div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6 w-full" onSubmit={handleSubmit}>
               <div className="w-full">
                 <label

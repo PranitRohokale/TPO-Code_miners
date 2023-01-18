@@ -4,8 +4,13 @@
   height: 100vh;
   flex-direction: column;
   padding: 20px 10px;
-  background-color: #fbd951;
+  background-color: #013d68;
   overflow: hidden;
+  /* background-color: #fbd951; */
+  /* background-color: #3c4fff; */
+  /* background-color: #22a6c7; */
+  /* background-color: #7a87fc; */
+  /* background-color: #0087ca; */
   /* background-color: #003459; */
   /* background-color: #3c4fff; */
   /* background-color: #219ebc; */
@@ -43,14 +48,16 @@
 
 .sidebarList li div:hover,
 .active {
-  background-color: #efe585;
+  /* background-color: #efe585; */
+  background-color: #007ea7;
+
   cursor: pointer;
 }
 
 .sidebarList li div .listIcon {
   margin-right: 10px;
   /* color: white; */
-  color: #000;
+  color: rgb(255, 255, 255);
 }
 
 .sidebarList li div a {

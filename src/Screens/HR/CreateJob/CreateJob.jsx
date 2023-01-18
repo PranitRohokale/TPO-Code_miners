@@ -206,7 +206,7 @@ const CreateJob = () => {
         <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
           <div className="text-center text-2xl font-bold">Create a Job</div>
           <div className="mt-4 sm:w-full sm:max-w-2xl m-auto">
-            <div className="bg-white py-4 px-4 sm:rounded-lg sm:px-10">
+            <div className="bg-white drop-shadow-lg py-4 px-4 sm:rounded-lg sm:px-10">
               <form className="space-y-6 w-full" onSubmit={handleSubmit}>
                 <div className="w-full">
                   <label
@@ -490,7 +490,8 @@ const CreateJob = () => {
                 <div>
                   <button
                     type="submit"
-                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    style={{backgroundColor: "#007ea7",}}
+                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2"
                   >
                     Create Job
                   </button>
