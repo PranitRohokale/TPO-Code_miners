@@ -198,10 +198,11 @@ const ViewStudents = () => {
                       <Checkbox
                         checked={row.isCr}
                         onChange={(e) => {
-                          var newStudentAttr = { "isCr": !row.isCr }; //...students[index],
+                          var oldCrVal=row.isCr;
+                          var newStudentAttr = { "isCr": !oldCrVal }; //...students[index],
                           updateStudent(row.id, newStudentAttr);
                           var updatedCrs_ = updatedCrs;
-                          updatedCrs_[row.id] = students[index].isCr;
+                          updatedCrs_[row.id] = !oldCrVal;
                           setUpdatedCrs(updatedCrs_);
                           console.log(updatedCrs);
                         }}
