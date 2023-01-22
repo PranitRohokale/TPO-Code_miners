@@ -21,6 +21,7 @@ import CriteriaDropdown from "../../../Components/AdminViewStudents/CriteriaDrop
 
 const CHOOSE_ALL_VAL_INT = 0;
 const CHOOSE_ALL_VAL_STR = " ";
+const CHOOSE_ALL_VAL_OBJ = { name: CHOOSE_ALL_VAL_STR };
 const CHOOSE_ALL_NAME = "All";
 const PLACED_NP = "Not placed";
 const PLACED_N = "Normal";
@@ -58,6 +59,44 @@ const CPI_RANGES = [
   cpiRange(1, 0.5),
   cpiRange(0.5, 0),
 ];
+
+const cpiRangeObjFromName = (cpiRangeName) => {
+  const cpiRangeParts = cpiRangeName.split(" - ");
+  if (cpiRangeParts.length !== 2) {
+    return CHOOSE_ALL_VAL_OBJ;
+  }
+  const cpiRangeMax = Number(cpiRangeParts[0]);
+  const cpiRangeMin = Number(cpiRangeParts[1]);
+  return cpiRange(cpiRangeMax, cpiRangeMin);
+};
+
+const studentFilter = (
+  student,
+  chosenProgram,
+  chosenBranch,
+  chosenGradYear,
+  chosenPlaced,
+  chosenCpiRange
+) => {
+  return (
+    (chosenProgram === CHOOSE_ALL_VAL_STR ||
+      chosenProgram === student.programme) &&
+    (chosenBranch === CHOOSE_ALL_VAL_STR || chosenBranch === student.branch) &&
+    (chosenGradYear === 0 || chosenGradYear === student.gradYear) &&
+    (chosenPlaced === CHOOSE_ALL_VAL_STR ||
+      (chosenPlaced === PLACED_SD && student.isSuperPlaced) ||
+      (chosenPlaced === PLACED_D && student.isDreamPlaced) ||
+      (chosenPlaced === PLACED_N && student.isNormalPlaced) ||
+      (chosenPlaced === PLACED_NP &&
+        !(
+          student.isNormalPlaced ||
+          student.isDreamPlaced ||
+          student.isSuperPlaced
+        ))) &&
+    (chosenCpiRange.name === CHOOSE_ALL_VAL_STR ||
+      (chosenCpiRange.max >= student.CPI && student.CPI >= chosenCpiRange.min))
+  );
+};
 
 // function createStudentData(
 //     name,
@@ -157,6 +196,7 @@ const ViewStudents = () => {
   const [availableGradYears, setAvailableGradYears] = useState([]);
   const { loading, error } = useQuery(GET_ALL_STUDENTS, {
     onCompleted: (data) => {
+      // console.log(data);
       setStudents(data.Students);
       var uniquePrograms = availablePrograms;
       var uniqueBraches = availableBranches;
@@ -198,7 +238,7 @@ const ViewStudents = () => {
   const [chosenBranch, setChosenBranch] = useState(CHOOSE_ALL_VAL_STR);
   const [chosenGradYear, setChosenGradYear] = useState(0);
   const [chosenPlaced, setChosenPlaced] = useState(CHOOSE_ALL_VAL_STR);
-  const [chosenCpiRange, setChosenCpiRange] = useState(CHOOSE_ALL_VAL_STR);
+  const [chosenCpiRange, setChosenCpiRange] = useState(CHOOSE_ALL_VAL_OBJ);
   // if(loading)
   //     return
 
@@ -261,15 +301,15 @@ const ViewStudents = () => {
             label="CPI Range"
             defaultVal={CHOOSE_ALL_VAL_STR}
             defaultValName={CHOOSE_ALL_NAME}
-            chosen={chosenCpiRange}
+            chosen={chosenCpiRange.name}
             handleChange={(e) => {
-              setChosenCpiRange(e.target.value);
+              setChosenCpiRange(cpiRangeObjFromName(e.target.value));
             }}
             available={CPI_RANGES.map((cpi_range) => cpi_range.name)}
           />
           {/* <Button
             onClick={() => {
-              // console.log(students);
+              console.log(students);
               console.log(
                 "Chosen Branch: " +
                   chosenBranch +
@@ -286,12 +326,12 @@ const ViewStudents = () => {
         </div>
         <br />
         {students ? (
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} style={{ background: "#ffbf00" }}>
             <Table
-              sx={{ minWidth: 350, maxWidth: 350 }}
+              // sx={{ minWidth: 350, maxWidth: 350 }}
               aria-label="simple table"
             >
-              <TableHead style={{ background: "#ffbf00" }}>
+              <TableHead>
                 <TableRow>
                   <TableCell style={{ fontWeight: 600 }}>
                     Student Name
@@ -331,35 +371,18 @@ const ViewStudents = () => {
                   </TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
+              <TableBody style={{ background: "#fff" }}>
                 {students
-                  .filter((s) => {
-                    const cpiRangeName = chosenCpiRange;
-                    const cpiRangeParts = cpiRangeName.split(" - ");
-                    const cpiRangeMax = cpiRangeParts[0];
-                    const cpiRangeMin = cpiRangeParts[1];
-                    console.log("Max:",cpiRangeMax);
-                    console.log("Min:",cpiRangeMin);
-
-                    return (
-                      (chosenProgram === CHOOSE_ALL_VAL_STR ||
-                        chosenProgram === s.programme) &&
-                      (chosenBranch === CHOOSE_ALL_VAL_STR || chosenBranch === s.branch) &&
-                      (chosenGradYear === 0 || chosenGradYear === s.gradYear) &&
-                      (chosenPlaced === CHOOSE_ALL_VAL_STR ||
-                        (chosenPlaced === PLACED_SD && s.isSuperPlaced) ||
-                        (chosenPlaced === PLACED_D && s.isDreamPlaced) ||
-                        (chosenPlaced === PLACED_N && s.isNormalPlaced) ||
-                        (chosenPlaced === PLACED_NP &&
-                          !(
-                            s.isNormalPlaced ||
-                            s.isDreamPlaced ||
-                            s.isSuperPlaced
-                          ))) &&
-                      (chosenCpiRange === CHOOSE_ALL_VAL_STR ||
-                        (cpiRangeMax >= s.CPI && s.CPI >= cpiRangeMin))
-                    );
-                  })
+                  .filter((s) =>
+                    studentFilter(
+                      s,
+                      chosenProgram,
+                      chosenBranch,
+                      chosenGradYear,
+                      chosenPlaced,
+                      chosenCpiRange
+                    )
+                  )
                   .map((row, index) => (
                     <TableRow
                       key={index}
