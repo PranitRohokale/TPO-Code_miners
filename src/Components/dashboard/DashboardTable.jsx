@@ -9,9 +9,9 @@ import Paper from '@mui/material/Paper';
 
 const DashboardTable = ({rows})=> {
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 250, maxWidth: 250 }} aria-label="simple table">
-        <TableHead>
+    <TableContainer component={Paper} sx={{maxWidth: 250}}>
+      <Table sx={{maxWidth: 250}} aria-label="simple table">
+        <TableHead style={{ background: "#ffff66" }}>
           <TableRow>
             <TableCell>Company Name</TableCell>
             <TableCell align="right">CTC</TableCell>

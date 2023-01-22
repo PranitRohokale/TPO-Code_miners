@@ -1,18 +1,9 @@
 import * as React from "react";
 import {
     Container,
-    Snackbar,
     Typography,
-    Alert,
     Grid,
-    Card,
-    CardActions,
-    CardContent,
-    Button,
-    Dialog,
-    useMediaQuery,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import DashboardCard from "../../../Components/dashboard/DashboardCard";
 import DashboardTable from "../../../Components/dashboard/DashboardTable";
 import DashboardHeading from "../../../Components/dashboard/DashboardHeading";
@@ -59,7 +50,7 @@ var dashboardData= {
                 "color_val": "#f7adea"}
         ]
     },
-    "top10Companies": [
+    "topRecruiters": [
         createData('DE Shaw', 62, 1),
         createData('Wells Fargo', 24, 15),
         createData('Deutche Bank', 19, 11),
@@ -102,8 +93,8 @@ const AdminDashboard = () => {
                 {dashboardData.students.internships.map((row)=>(
                     <DashboardCard desc={row.desc} value={row.value} color_val={row.color_val} />))}
             </Grid>
-            <DashboardHeading text='Top 10 Recruiters:'/>
-            <DashboardTable rows={dashboardData.top10Companies}/>
+            <DashboardHeading text='Top Recruiters:'/>
+            <DashboardTable rows={dashboardData.topRecruiters}/>
         </Container>
         </div>
     );

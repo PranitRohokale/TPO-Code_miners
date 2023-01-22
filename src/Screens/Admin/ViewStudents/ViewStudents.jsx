@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Container,
   Button,
@@ -10,9 +10,10 @@ import {
   TableRow,
   Paper,
   Checkbox,
+  Box,
+  CircularProgress,
 } from "@mui/material";
 import styles from "../TpoPolicy/TpoPolicy.module.css";
-import { Link } from "react-router-dom";
 // import StudentsTable from "../../../Components/AdminViewStudents/StudentsTable";
 import { GET_ALL_STUDENTS } from "../../../Graphql/Queries/AdminViewStudents/adminViewStudents";
 import { useQuery } from "@apollo/client";
@@ -61,10 +62,10 @@ const CPI_RANGES = [
 ];
 
 const cpiRangeObjFromName = (cpiRangeName) => {
-  const cpiRangeParts = cpiRangeName.split(" - ");
-  if (cpiRangeParts.length !== 2) {
+  if (cpiRangeName === CHOOSE_ALL_VAL_STR) {
     return CHOOSE_ALL_VAL_OBJ;
   }
+  const cpiRangeParts = cpiRangeName.split(" - ");
   const cpiRangeMax = Number(cpiRangeParts[0]);
   const cpiRangeMin = Number(cpiRangeParts[1]);
   return cpiRange(cpiRangeMax, cpiRangeMin);
@@ -324,8 +325,15 @@ const ViewStudents = () => {
             Log
           </Button> */}
         </div>
+
         <br />
-        {students ? (
+        {error ? (
+          "Error"
+        ) : loading ? (
+          <Box sx={{marginTop:3, textAlign:'center'}}>
+            <CircularProgress color="warning" />
+          </Box>
+        ) : (
           <TableContainer component={Paper} style={{ background: "#ffbf00" }}>
             <Table
               // sx={{ minWidth: 350, maxWidth: 350 }}
@@ -455,10 +463,7 @@ const ViewStudents = () => {
               </TableBody>
             </Table>
           </TableContainer>
-        ) : (
-          "Loading..."
         )}
-        <hr />
         <Button
           onClick={() => {}}
           variant="contained"
