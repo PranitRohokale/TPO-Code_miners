@@ -13,9 +13,9 @@ const DashboardTable = ({rows})=> {
       <Table sx={{maxWidth: 250}} aria-label="simple table">
         <TableHead style={{ background: "#ffff66" }}>
           <TableRow>
-            <TableCell>Company Name</TableCell>
-            <TableCell align="right">CTC</TableCell>
-            <TableCell align="right">Students recruited</TableCell>
+            <TableCell style={{ fontWeight: 600 }}>Company Name</TableCell>
+            <TableCell align="right" style={{ fontWeight: 600 }}>CTC</TableCell>
+            <TableCell align="right" style={{ fontWeight: 600 }}>Students recruited</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

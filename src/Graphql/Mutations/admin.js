@@ -28,8 +28,17 @@ const GET_ADMIN_INFO_QUERY = gql`
   }
 `;
 
+const UPDATE_STUDENT_FOR_CR_MUTATION = gql`
+mutation updateStudent($id: uuid = "", $isCr: Boolean = false) {
+  update_Students_by_pk(pk_columns: {id: $id}, _set: {isCr: $isCr}) {
+    id
+    isCr
+  }
+}
+`;
 
 export {
     CREATE_NEW_ADMIN_MUTATION,
-    GET_ADMIN_INFO_QUERY
+    GET_ADMIN_INFO_QUERY,
+    UPDATE_STUDENT_FOR_CR_MUTATION
 }

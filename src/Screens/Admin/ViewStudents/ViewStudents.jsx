@@ -16,9 +16,10 @@ import {
 import styles from "../TpoPolicy/TpoPolicy.module.css";
 // import StudentsTable from "../../../Components/AdminViewStudents/StudentsTable";
 import { GET_ALL_STUDENTS } from "../../../Graphql/Queries/AdminViewStudents/adminViewStudents";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import ASidebar from "../../../Components/adminSidebar/ASidebar";
 import CriteriaDropdown from "../../../Components/AdminViewStudents/CriteriaDropdown";
+import { UPDATE_STUDENT_FOR_CR_MUTATION } from "../../../Graphql/Mutations/admin";
 
 const CHOOSE_ALL_VAL_INT = 0;
 const CHOOSE_ALL_VAL_STR = " ";
@@ -195,6 +196,9 @@ const ViewStudents = () => {
   const [availablePrograms, setAvailablePrograms] = useState([]);
   const [availableBranches, setAvailableBranches] = useState([]);
   const [availableGradYears, setAvailableGradYears] = useState([]);
+  const [updateStudentForCr, { crData, loadingM, hrError }] = useMutation(
+    UPDATE_STUDENT_FOR_CR_MUTATION
+  );
   const { loading, error } = useQuery(GET_ALL_STUDENTS, {
     onCompleted: (data) => {
       // console.log(data);
@@ -240,8 +244,19 @@ const ViewStudents = () => {
   const [chosenGradYear, setChosenGradYear] = useState(0);
   const [chosenPlaced, setChosenPlaced] = useState(CHOOSE_ALL_VAL_STR);
   const [chosenCpiRange, setChosenCpiRange] = useState(CHOOSE_ALL_VAL_OBJ);
-  // if(loading)
-  //     return
+
+  const handleSave = () => {
+    for (var crId in updatedCrs) {
+      updateStudentForCr({
+        variables: {
+          id: crId,
+          isCr: updatedCrs[crId],
+        },
+      });
+    }
+    setUpdatedCrs({});
+    // window.location.reload();
+  };
 
   return (
     <div className={styles.hospitals_wrapper}>
@@ -330,7 +345,7 @@ const ViewStudents = () => {
         {error ? (
           "Error"
         ) : loading ? (
-          <Box sx={{marginTop:3, textAlign:'center'}}>
+          <Box sx={{ marginTop: 3, textAlign: "center" }}>
             <CircularProgress color="warning" />
           </Box>
         ) : (
@@ -465,10 +480,24 @@ const ViewStudents = () => {
           </TableContainer>
         )}
         <Button
-          onClick={() => {}}
+          onClick={() => {
+            window.location.reload();
+          }}
+          variant="contained"
+          color="warning"
+          sx={{ marginTop: 3, marginLeft: 90 }}
+          disabled={Object.keys(updatedCrs).length === 0}
+        >
+          Discard Changes
+        </Button>
+        <Button
+          onClick={() => {
+            handleSave();
+          }}
           variant="contained"
           color="success"
-          sx={{ marginTop: 3, marginLeft: 120 }}
+          sx={{ marginTop: 3, marginLeft: 5 }}
+          disabled={Object.keys(updatedCrs).length === 0}
         >
           Save Changes
         </Button>

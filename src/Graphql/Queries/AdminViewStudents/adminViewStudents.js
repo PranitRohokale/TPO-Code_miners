@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 const GET_ALL_STUDENTS   = gql`
 query getAllStudents($where: Students_bool_exp = {}) {
-    Students(where: $where) {
+    Students(where: $where, order_by: {clgId: asc}) {
       CPI
       SPI1
       SPI2
