@@ -9,7 +9,8 @@ import {
 } from "../../Graphql/Queries/recruiter";
 import {
   STUDENT_TRANSITION_FOR_NEXT_ROUND,
-  MARK_FINAL_SELECT_STUDENTS_MUTATION,
+  MARK_FINAL_REJECT_STUDENTS_MUTATION,
+  MARK_FINAL_SELECT_STUDENTS_MUTATION
 } from "../../Graphql/Mutations/recruter";
 
 const RoundDetails = () => {
@@ -74,6 +75,9 @@ const RoundDetails = () => {
   const [selectFinalStudents, { data: finalStudentsData }] = useMutation(
     MARK_FINAL_SELECT_STUDENTS_MUTATION
   );
+  const [rejectFinalStudents, { data: finalStudentsDataRejects }] = useMutation(
+    MARK_FINAL_REJECT_STUDENTS_MUTATION
+  );
 
   //helper fucntions
   const checkHandler = (id) => {
@@ -111,11 +115,16 @@ const RoundDetails = () => {
   };
 
   const finalSelects = () => {
+    rejectFinalStudents({
+      variables: {
+        jobId
+      },
+    });
+
     selectFinalStudents({
       variables: {
         applicationsIds: shortlistedStudents,
-        roundId,
-        jobId
+        roundId
       },
     });
 

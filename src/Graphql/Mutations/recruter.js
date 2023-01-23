@@ -60,11 +60,16 @@ mutation studentTransitionForNextRound($roundId: bigint = "", $_set: Rounds_set_
 //   }
 // `;
 
-const MARK_FINAL_SELECT_STUDENTS_MUTATION = gql`
-  mutation markFinalSelectStudents($applicationsIds: [bigint!] = "", $roundId: bigint = "", $jobId:bigint = "") {
+const MARK_FINAL_REJECT_STUDENTS_MUTATION = gql`
+  mutation markFinalRejectStudents($jobId:bigint = "") {
     update_Applications_many(updates: {where: {jobId: {_eq: $jobId}}, _set: {selectionStatus: -1}}) {
       affected_rows
     }
+  }
+`;
+
+const MARK_FINAL_SELECT_STUDENTS_MUTATION = gql`
+  mutation markFinalSelectStudents($applicationsIds: [bigint!] = "", $roundId: bigint = "") {
     update_Applications_many(updates: {where: {id: {_in: $applicationsIds}}, _set: {selectionStatus: 1}}) {
       affected_rows
     }
@@ -79,5 +84,6 @@ export {
     CREATE_NEW_JOB_MUTATION,
     CREATE_NEW_ROUND,
     STUDENT_TRANSITION_FOR_NEXT_ROUND,
-    MARK_FINAL_SELECT_STUDENTS_MUTATION
+    MARK_FINAL_SELECT_STUDENTS_MUTATION,
+    MARK_FINAL_REJECT_STUDENTS_MUTATION
 }
