@@ -115,6 +115,7 @@ const RoundDetails = () => {
       variables: {
         applicationsIds: shortlistedStudents,
         roundId,
+        jobId
       },
     });
 
@@ -214,7 +215,7 @@ const RoundDetails = () => {
                         const {
                           id: applicationId,
                           resumeLink,
-                          isSelected,
+                          selectionStatus,
                           Student,
                         } = row;
                         const {
@@ -251,7 +252,7 @@ const RoundDetails = () => {
                                   onChange={() => checkHandler(applicationId)}
                                   id="flexCheckDefault"
                                 />
-                                {isSelected && (
+                                {(selectionStatus===1) && (
                                   <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-blue-400 text-white rounded-full">
                                     Selected
                                   </span>

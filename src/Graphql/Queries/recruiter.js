@@ -35,7 +35,7 @@ const GET_APPLICANT_LIST_BY_JOB_ID_QUERY = gql`
     Applications(where: {jobId: {_eq: $jobId}}, order_by: {insertted_at: desc}) {
       id
       isAccepted
-      isSelected
+      selectionStatus
       resumeLink
       Student {
         id
@@ -109,7 +109,7 @@ const GET_STUDENTS_DETAILS_FRO_EACH_ROUND_QUERY = gql`
     Applications(where: {jobId: {_eq: $jobId}, id: {_in: $applicationIds}}) {
       id
       resumeLink
-      isSelected
+      selectionStatus
       Student {
         CPI
         branch

@@ -49,9 +49,23 @@ mutation studentTransitionForNextRound($roundId: bigint = "", $_set: Rounds_set_
   }
 }`
 
+// const MARK_FINAL_SELECT_STUDENTS_MUTATION = gql`
+//   mutation markFinalSelectStudents($applicationsIds: [bigint!] = "", $roundId: bigint = "") {
+//     update_Applications_many(updates: {where: {id: {_in: $applicationsIds}}, _set: {isSelected: true}}) {
+//       affected_rows
+//     }
+//     update_Rounds(where: {id: {_eq: $roundId}}, _set: {status: "completed"}) {
+//       affected_rows
+//     }
+//   }
+// `;
+
 const MARK_FINAL_SELECT_STUDENTS_MUTATION = gql`
-  mutation markFinalSelectStudents($applicationsIds: [bigint!] = "", $roundId: bigint = "") {
-    update_Applications_many(updates: {where: {id: {_in: $applicationsIds}}, _set: {isSelected: true}}) {
+  mutation markFinalSelectStudents($applicationsIds: [bigint!] = "", $roundId: bigint = "", $jobId:bigint = "") {
+    update_Applications_many(updates: {where: {jobId: {_eq: $jobId}}, _set: {selectionStatus: -1}}) {
+      affected_rows
+    }
+    update_Applications_many(updates: {where: {id: {_in: $applicationsIds}}, _set: {selectionStatus: 1}}) {
       affected_rows
     }
     update_Rounds(where: {id: {_eq: $roundId}}, _set: {status: "completed"}) {
@@ -59,6 +73,7 @@ const MARK_FINAL_SELECT_STUDENTS_MUTATION = gql`
     }
   }
 `;
+
 export {
     CREATE_NEW_RECRUTERS_MUTATION,
     CREATE_NEW_JOB_MUTATION,
