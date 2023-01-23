@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useMutation } from '@apollo/client';
+import { useMutation } from "@apollo/client";
 import { supabase } from "../../../Utils/supabase.config";
 import { CREATE_NEW_RECRUTERS_MUTATION } from "../../../Graphql/Mutations/recruter";
 
@@ -11,7 +11,9 @@ const RegisterHR = () => {
   const [mobileNo, setMobileNo] = useState("");
   const [password, setPassword] = useState("");
 
-  const [hrRegister, { hrData, loading, hrError }] = useMutation(CREATE_NEW_RECRUTERS_MUTATION);
+  const [hrRegister, { hrData, loading, hrError }] = useMutation(
+    CREATE_NEW_RECRUTERS_MUTATION
+  );
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -38,42 +40,41 @@ const RegisterHR = () => {
       },
     });
 
-
-    if (!error) {
+    if (error) {
+      return alert("Something went wrong...");
+    } else {
       hrRegister({
         variables: {
           objects: [
             {
-              "id": data.user.id,
-              "name": name,
-              "email": emailId,
-              "companyName": companyName,
-              "mobileNo": mobileNo
-            }
-          ]
-        }
+              id: data.user.id,
+              name: name,
+              email: emailId,
+              companyName: companyName,
+              mobileNo: mobileNo,
+            },
+          ],
+        },
       });
       alert("To verify email checkout your inbox..");
       navigate("/login");
     }
 
-
-    setName("")
-    setPassword("")
-    setCompanyName("")
-    setEmailId("")
-    setMobileNo("")
+    setName("");
+    setPassword("");
+    setCompanyName("");
+    setEmailId("");
+    setMobileNo("");
   };
 
   return (
-    <div
-    >
+    <div>
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
         <div className="text-center text-2xl font-bold">
           Register as a recruiter
         </div>
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md shadow-lg">
-						<div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6 w-full" onSubmit={handleSubmit}>
               <div className="w-full">
                 <label

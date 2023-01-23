@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../Utils/supabase.config";
 import { CREATE_NEW_ROUND } from "../../Graphql/Mutations/recruter";
-import { useMutation,useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { GET_RECRUITER_INFO } from "../../Graphql/Queries/recruiter";
 
 const CreateRound = () => {
@@ -15,6 +15,7 @@ const CreateRound = () => {
   const [roundDetails, setRoundDetails] = useState("");
   const [dateDeadline, setDateDeadline] = useState("");
   const [recruterId, setRecruterId] = useState();
+  const [recruterCompanyName, setrecruterCompanyName] = useState("");
 
   const [createNewRound, { jobData, jobloading, jobError }] =
     useMutation(CREATE_NEW_ROUND);
@@ -25,13 +26,18 @@ const CreateRound = () => {
     data: recruiterInfo,
   } = useQuery(GET_RECRUITER_INFO, {
     variables: { _eq: recruterId },
+    onCompleted: (data) => {
+      console.log(data, "DATaaaaa");
+      setRecruterId(data?.Recruiters[0]?.id);
+      setrecruterCompanyName(data?.Recruiters[0]?.companyName);
+    },
   });
 
   useEffect(() => {
     const role = "";
     supabase.auth.getSession().then((res) => {
       if (res?.data?.session?.user) {
-        // console.log(" HR ", res?.data?.session?.user.id);
+        console.log(" HR ", res?.data?.session?.user.id);
         setRecruterId(res?.data?.session?.user?.id);
       } else navigate("/login");
       let role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
@@ -44,7 +50,8 @@ const CreateRound = () => {
     e.preventDefault();
     // let status="upcomming";
     // console.log(round, isFinal, roundDetails, dateDeadline,jobId,"data");
-
+    // alert(recruterId);
+    // alert(recruterCompanyName)
     createNewRound({
       variables: {
         object: {
@@ -54,7 +61,7 @@ const CreateRound = () => {
           roundDetail: roundDetails,
           jobId: jobId,
           status: "upcomming",
-          companyName: recruiterInfo?.companyName ?? "GroundUp.",
+          companyName: recruterCompanyName,
           shortlistStudentList: {
             list: [],
           },
