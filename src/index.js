@@ -7,8 +7,12 @@ import { Provider } from 'react-redux'
 import store from './store';
 import { ApolloProvider } from '@apollo/client';
 import client from "./Utils/ApolloClient"
+import { getUserDetails } from './actions/userActions';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+store.dispatch(getUserDetails())
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>

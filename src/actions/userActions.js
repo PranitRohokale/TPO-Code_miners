@@ -82,10 +82,10 @@ export const getUserDetails = () => async (dispatch) => {
         })
 
         const { data } = await supabase.auth.getUser()
-        console.log("getUserDetails ", data);
+        // console.log("getUserDetails ", data);
         dispatch({
             type: ADMIN_DETAILS_SUCCESS,
-            payload: data?.user ? data?.user : undefined,
+            payload: data?.user ?? "undefined",
         })
     } catch (error) {
         const message =
