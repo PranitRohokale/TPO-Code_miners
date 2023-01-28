@@ -5,10 +5,16 @@ import { supabase } from "../../Utils/supabase.config";
 import { CREATE_NEW_ROUND } from "../../Graphql/Mutations/recruter";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_RECRUITER_INFO } from "../../Graphql/Queries/recruiter";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addNewRound,
+  getAllRoundsDetails,
+} from "../../actions/interviewRoundActions";
 
 const CreateRound = () => {
   const { jobId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [round, setRound] = useState(0);
   const [isFinal, setIsFinal] = useState(false);
@@ -17,8 +23,7 @@ const CreateRound = () => {
   const [recruterId, setRecruterId] = useState();
   const [recruterCompanyName, setrecruterCompanyName] = useState("");
 
-  const [createNewRound, { jobData, jobloading, jobError }] =
-    useMutation(CREATE_NEW_ROUND);
+  const [createNewRound, { data: roundData }] = useMutation(CREATE_NEW_ROUND);
 
   const {
     loading,
@@ -48,30 +53,44 @@ const CreateRound = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // let status="upcomming";
-    // console.log(round, isFinal, roundDetails, dateDeadline,jobId,"data");
-    // alert(recruterId);
-    // alert(recruterCompanyName)
-    createNewRound({
-      variables: {
-        object: {
-          roundNo: round,
-          isFinal: isFinal,
-          roundTime: dateDeadline,
-          roundDetail: roundDetails,
-          jobId: jobId,
-          status: "upcomming",
-          companyName: recruterCompanyName,
-          shortlistStudentList: {
-            list: [],
-          },
+    if (!(dateDeadline && roundDetails)) return alert("All fields required");
+
+    
+    // createNewRound({
+    //   variables: {
+    //     object: {
+    //       roundNo: round,
+    //       isFinal: isFinal,
+    //       roundTime: dateDeadline,
+    //       roundDetail: roundDetails,
+    //       jobId: jobId,
+    //       status: "upcomming",
+    //       companyName: recruterCompanyName,
+    //       shortlistStudentList: {
+    //         list: [],
+    //       },
+    //     },
+    //   },
+    // });
+
+    dispatch(
+      addNewRound({
+        roundNo: round,
+        isFinal: isFinal,
+        roundTime: dateDeadline,
+        roundDetail: roundDetails,
+        jobId: jobId,
+        status: "upcomming",
+        companyName: recruterCompanyName,
+        shortlistStudentList: {
+          list: [],
         },
-      },
-    });
+      })
+    );
+
     alert("round created");
+
     navigate(`/hr/createdjobs/${jobId}/`);
-    // if (!(name && companyName && emailId && mobileNo && password))
-    //   return alert("All fields required");
   };
 
   return (

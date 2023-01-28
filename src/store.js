@@ -3,11 +3,13 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { supabase } from './Utils/supabase.config'
 import { userRegisterReducer, userLoginReducer, userDetailsReducer } from './reducers/userReducer'
+import { interviewRoundReducer } from './reducers/interviewRoundReducer'
 
 const reducer = combineReducers({
     userRegister: userRegisterReducer,
     userLogin: userLoginReducer,
-    userDetails: userDetailsReducer
+    userDetails: userDetailsReducer,
+    interviewRounds: interviewRoundReducer
 })
 
 const userInfoFromSession = () => {

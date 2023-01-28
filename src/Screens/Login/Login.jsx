@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getUserDetails } from "../../actions/userActions";
 import { supabase } from "../../Utils/supabase.config";
 
 const Login = () => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const role = "";
     supabase.auth.getSession().then((res) => {
       if (res?.data?.session?.user) setUserInfo(res?.data?.session);
-      role = res?.data?.session?.user?.user_metadata?.role;
+      role = res?.data?.session?.user?.user_metadata?.role?.toLowerCase();
       console.log("res ", res);
       if (role) navigate(`/${role}`);
     });
 
-    // dispatch(getUserDetails());
+    dispatch(getUserDetails());
     // const role = userDetailInfo?.user?.user_metadata?.role;
     // console.log(role);
     // if (role) navigate(`/${role}`);
@@ -42,13 +45,16 @@ const Login = () => {
       role.toLowerCase()
     ) {
       const role = data?.session?.user?.user_metadata?.role?.toLowerCase();
-      navigate(`/${role}`);
-    } else alert("somthing went wrong!!");
+      dispatch(getUserDetails());
 
-    //reset
-    setEmail("");
-    setPassword("");
-    setRole("admin");
+      setTimeout(() => {
+        //reset
+        setEmail("");
+        setPassword("");
+        setRole("admin");
+        navigate(`/${role}`);
+      }, 1000);
+    } else alert("somthing went wrong!!");
   };
 
   return (
@@ -56,7 +62,7 @@ const Login = () => {
       <div className="flex flex-col justify-center py-2 sm:px-6 lg:px-8">
         <div className="text-center text-2xl font-bold">Login</div>
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md shadow-lg">
-						<div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6 w-full" onSubmit={handleSubmit}>
               <div className="w-full">
                 <label

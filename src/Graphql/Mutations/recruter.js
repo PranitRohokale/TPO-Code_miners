@@ -29,9 +29,13 @@ const CREATE_NEW_ROUND = gql`
 mutation createNewRound($object: Rounds_insert_input!) {
   insert_Rounds_one(object: $object) {
     id
-    roundNo
     jobId
+    companyName
+    isFinal
+    roundDetail
+    roundNo
     roundTime
+    status
     shortlistStudentList
   }
 }`

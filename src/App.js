@@ -20,6 +20,8 @@ import Schedule from './Screens/Admin/Schedule';
 import CreateRound from './Screens/HR/CreateRound';
 import Error from './Screens/Error';
 import MainHome from './Screens/Home/MainHome';
+import PrivateRoute from './Utils/PrivateOutlet';
+
 
 function App() {
 	return (
@@ -28,16 +30,15 @@ function App() {
 				<Routes>
 					<Route path='/' element={<MainHome />} />
 					<Route path='/login' element={<Login />} />
+					<Route path='/admin/register' element={<RegisterAdmin />} />
+					<Route path='/hr/register' element={<RegisterHR />} />
 				</Routes>
 				{/* hr routes goes here */}
 				<Routes>
-					<Route path='/hr'>
+					<Route path='/hr' element={<PrivateRoute role='hr' />}>
 						<Route index element={<HRProfileScreen />} />
-						<Route path='register' element={<RegisterHR />} />
 						<Route path='createjob' element={<CreateJob />} />
 						<Route path='profile' element={<HRProfileScreen />} />
-						{/* <Route path='results' element={< />} /> */}
-
 						<Route path='createdjobs'  >
 							<Route index element={<PastJobs />} />
 							<Route path=':jobId' element={<Job />} >
@@ -51,9 +52,8 @@ function App() {
 				</Routes>
 				{/* admin routes goes here  */}
 				<Routes>
-					<Route path='/admin'>
+					<Route path='/admin' element={<PrivateRoute role="admin" />}>
 						<Route index element={<AdminDashboard />} />
-						<Route path='register' element={<RegisterAdmin />} />
 						<Route path='tpopolicy' element={<TpoPolicy />} />
 						<Route path='profile' element={<ProfileScreen />} />
 						<Route path='schedule' element={<Schedule />} />

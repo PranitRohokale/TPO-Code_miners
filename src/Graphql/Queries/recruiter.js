@@ -92,13 +92,15 @@ query getJobInfoByJobId($id: bigint = "") {
 const GET_ROUNDS_INFO_BY_APPLICATIONID_QUERY = gql`
   query getRoundsInfoByApplicationid($applicationId: bigint = "") {
     Rounds(where: {jobId: {_eq: $applicationId}}, order_by: {inserted_at: asc}) {
-      id
-      isFinal
-      roundDetail
-      roundNo
-      roundTime
-      status
-      shortlistStudentList
+    id
+    jobId
+    companyName
+    isFinal
+    roundDetail
+    roundNo
+    roundTime
+    status
+    shortlistStudentList
     }
   }
 `;
