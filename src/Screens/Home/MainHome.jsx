@@ -1,9 +1,7 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Header from "./Header";
 import styles from "./MainHome.module.css";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import PersonIcon from "@mui/icons-material/Person";
-import PublicIcon from "@mui/icons-material/Public";
 import GroupIcon from '@mui/icons-material/Group';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
@@ -37,11 +35,9 @@ const MainHome = () => {
 								: theme.palette.grey[800],
 					}}
 				>
-					<Container maxWidth="sm">
-						<Typography variant="body">
-							TPO VJTI 2023 &#169; - All Rights Reserved.
-						</Typography>
-					</Container>
+					<div style={{textAlign: "center"}}>
+						TPO VJTI 2023 &#169; - All Rights Reserved.
+					</div>
 				</Box>
 			</>
 		);
@@ -92,6 +88,7 @@ Our goal is to reduce the reliance on manual processes, streamline the processes
 					<button
 						style={{
 							backgroundColor: "#753bd9",
+							color: "white",
 							padding: "7px 15px",
 						}}
 					>

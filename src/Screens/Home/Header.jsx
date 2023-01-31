@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import "./header.css";
-import { Container } from "@mui/material";
 import { useSelector } from "react-redux";
 
 export default function Header() {
@@ -16,10 +15,6 @@ export default function Header() {
       name: "Home",
       url: "/",
     },
-    // {
-    // 	name: "Dashboard",
-    // 	url: "/hospital/profile",
-    // },
     {
       name: "Recruiter",
       url: "/hr/register",
@@ -27,6 +22,10 @@ export default function Header() {
     {
       name: "Admin",
       url: "/admin/register",
+    },
+    {
+      name: "About",
+      url: "/about",
     },
     {
       name: userId && userRole ? "logout" : "login",

@@ -114,12 +114,25 @@
     font-size: x-large;
     align-self: center;
 }
-.features .feature_card p{
+
+.feature_card h4{
     display: block;
     text-decoration: none;
     text-transform: capitalize; 
-    color: grey;
+    margin: 5px 1px;
+    font-size:  large;
+    align-self: center;
+    color: rgb(128, 120, 120);
+}
+
+.feature_card p{
+    display: block;
+    text-decoration: none;
+    text-transform: capitalize; 
+    color: rgb(128, 120, 120);
+    font-size: x-medium;
     margin: 5px;
+    align-self: center;
     width: 100% !important;
 }
 .features .feature_card a{

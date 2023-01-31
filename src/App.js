@@ -1,7 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Sidebar from './Components/hrSidebar/Sidebar';
-import Home from './Screens/Home/Home';
 import RegisterHR from './Screens/HR/RegisterHr/RegisterHR';
 import RegisterAdmin from './Screens/Admin/RegisterAdmin/RegisterAdmin';
 import CreateJob from './Screens/HR/CreateJob/CreateJob';
@@ -21,6 +19,7 @@ import CreateRound from './Screens/HR/CreateRound';
 import Error from './Screens/Error';
 import MainHome from './Screens/Home/MainHome';
 import PrivateRoute from './Utils/PrivateOutlet';
+import About from './Screens/Home/About';
 
 
 function App() {
@@ -29,6 +28,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path='/' element={<MainHome />} />
+					<Route path='/about' element={<About />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/admin/register' element={<RegisterAdmin />} />
 					<Route path='/hr/register' element={<RegisterHR />} />
