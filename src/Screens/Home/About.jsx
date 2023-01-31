@@ -76,7 +76,7 @@ const About = () => {
                             role="App Developer"
                             name="Dhruvi Doshi"
                             text="Final Year Computer Engineering Student."
-                            icon="https://www.w3schools.com/w3images/team1.jpg"
+                            icon="/dhruvi.jpg"
                         />
                         <div style={{width:"20px"}}></div>
                         <FeatureCard
