@@ -91,7 +91,7 @@ const About = () => {
                             role="Web Developer"
                             name="Pranit Rohokale"
                             text="Final Year Computer Engineering Student."
-                            icon="https://www.w3schools.com/w3images/team2.jpg"
+                            icon="/pranit.jpg"
 
                         />
                         
