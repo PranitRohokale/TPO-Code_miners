@@ -10,7 +10,7 @@ import {
 import {
   STUDENT_TRANSITION_FOR_NEXT_ROUND,
   MARK_FINAL_REJECT_STUDENTS_MUTATION,
-  MARK_FINAL_SELECT_STUDENTS_MUTATION
+  MARK_FINAL_SELECT_STUDENTS_MUTATION,
 } from "../../Graphql/Mutations/recruter";
 
 const RoundDetails = () => {
@@ -35,38 +35,40 @@ const RoundDetails = () => {
     },
   });
 
-  const { loading: roundInfoLoading, error: roundInfoError } = useQuery(
-    GET_ALL_DETAILS_OF_ONE_ROUND_QUERY,
-    {
-      onCompleted: (data) => {
-        setRoundInfo(data.Rounds_by_pk);
-        let currentRoundNumber = 0;
-        rounds?.forEach((row, index) => {
-          if (row?.id == roundId) currentRoundNumber = index;
-        });
+  const {
+    loading: roundInfoLoading,
+    error: roundInfoError,
+    refetch: refetchRoundDetails,
+  } = useQuery(GET_ALL_DETAILS_OF_ONE_ROUND_QUERY, {
+    onCompleted: (data) => {
+      setRoundInfo(data.Rounds_by_pk);
+      let currentRoundNumber = 0;
+      rounds?.forEach((row, index) => {
+        if (row?.id == roundId) currentRoundNumber = index;
+      });
 
-        if (currentRoundNumber + 1 < rounds.length) {
-          setShortlistedStudents(
-            rounds[currentRoundNumber + 1]?.shortlistStudentList?.list
-          );
-        }
-      },
-      variables: {
-        roundId: roundId,
-      },
-    }
-  );
+      if (currentRoundNumber + 1 < rounds.length) {
+        setShortlistedStudents(
+          rounds[currentRoundNumber + 1]?.shortlistStudentList?.list
+        );
+      }
+    },
+    variables: {
+      roundId: roundId,
+    },
+  });
 
-  const { loading: studentsInfoLoading, error: studentsInfoError } = useQuery(
-    GET_STUDENTS_DETAILS_FRO_EACH_ROUND_QUERY,
-    {
-      onCompleted: (data) => setStudentsInfo(data.Applications),
-      variables: {
-        jobId,
-        applicationIds: roundInfo?.shortlistStudentList?.list ?? [],
-      },
-    }
-  );
+  const {
+    loading: studentsInfoLoading,
+    error: studentsInfoError,
+    refetch: refetchStudentsInfo,
+  } = useQuery(GET_STUDENTS_DETAILS_FRO_EACH_ROUND_QUERY, {
+    onCompleted: (data) => setStudentsInfo(data.Applications),
+    variables: {
+      jobId,
+      applicationIds: roundInfo?.shortlistStudentList?.list ?? [],
+    },
+  });
 
   const [studentTransition, { data }] = useMutation(
     STUDENT_TRANSITION_FOR_NEXT_ROUND
@@ -117,14 +119,14 @@ const RoundDetails = () => {
   const finalSelects = () => {
     rejectFinalStudents({
       variables: {
-        jobId
+        jobId,
       },
     });
 
     selectFinalStudents({
       variables: {
         applicationsIds: shortlistedStudents,
-        roundId
+        roundId,
       },
     });
 
@@ -150,6 +152,31 @@ const RoundDetails = () => {
       <h3 className="font-medium leading-tight text-center text-3xl mt-0 mb-2 text-white">
         Round No : {roundInfo?.roundNo ?? "-"}
       </h3>
+      {/* reftech button here  */}
+      <div class="flex md:flex md:flex-grow flex-row justify-end space-x-1">
+        <div class="space-x-2 m-3 inset-x-px">
+          <div>
+            <button
+              type="button"
+              className={`${"inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out"}`}
+              onClick={() => {
+                refetchRoundDetails({ roundId });
+
+                setTimeout(() => {
+                  refetchStudentsInfo({
+                    jobId,
+                    applicationIds: roundInfo?.shortlistStudentList?.list ?? [],
+                  });
+                }, 100);
+                
+                setShortlistedStudents([]);
+              }}
+            >
+              Refresh List
+            </button>
+          </div>
+        </div>
+      </div>
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -261,7 +288,7 @@ const RoundDetails = () => {
                                   onChange={() => checkHandler(applicationId)}
                                   id="flexCheckDefault"
                                 />
-                                {(selectionStatus===1) && (
+                                {selectionStatus === 1 && (
                                   <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-blue-400 text-white rounded-full">
                                     Selected
                                   </span>

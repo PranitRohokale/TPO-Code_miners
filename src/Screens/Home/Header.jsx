@@ -17,11 +17,11 @@ export default function Header() {
     },
     {
       name: "Recruiter",
-      url: "/hr/register",
+      url: "/register/hr",
     },
     {
       name: "Admin",
-      url: "/admin/register",
+      url: "/register/admin",
     },
     {
       name: "About",

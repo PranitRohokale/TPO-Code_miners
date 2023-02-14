@@ -30,8 +30,8 @@ function App() {
 					<Route path='/' element={<MainHome />} />
 					<Route path='/about' element={<About />} />
 					<Route path='/login' element={<Login />} />
-					<Route path='/admin/register' element={<RegisterAdmin />} />
-					<Route path='/hr/register' element={<RegisterHR />} />
+					<Route path='/register/admin' element={<RegisterAdmin />} />
+					<Route path='/register/hr' element={<RegisterHR />} />
 				</Routes>
 				{/* hr routes goes here */}
 				<Routes>
