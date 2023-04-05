@@ -11,6 +11,8 @@ Our Recruitment portal is designed to keep track of all the records of the stude
 
 ## 🔗 Links
 [Student Mobile Interface](https://github.com/dhruvi29/TPO-VJTI-Mobile)
+[Confluence Doc For Graphql](https://drive.google.com/file/d/1QDvpZIceINM61qgYCZZsQclf50i38Txz/view?usp=sharing)
+
 
 
 ## Our Three Roles
